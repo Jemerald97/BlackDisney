@@ -13,7 +13,7 @@ const app = express();
 // });
 
 //app.use(bodyParser.urlencoded({extended:false}))
-console.log('안녕하세요');
+//console.log('안녕하세요');
 
 // router.get('/', (req,res,next)=>{
 //     res.render('signup', { title: 'Signup' }); //파일
@@ -36,13 +36,13 @@ router.get('/', (req,res,next)=>{
     //fs.readFile('signup.ejs', 'utf-8', function(error, data){
         // res.writeHead(200, {'Content-Type':'text/ejs'});
         // res.end(ejs.render(data));
-        client.query('SELECT * FROM members', (error, results)=>{
-            console.log('안녕하세요');
-            // res.send(ejs.render(data, {
-            //     data: results
-            // }));
-            console.log('안녕하세요');
-        });
+        // client.query('SELECT * FROM members', (error, results)=>{
+        //     console.log('안녕하세요');
+        //     // res.send(ejs.render(data, {
+        //     //     data: results
+        //     // }));
+        //     console.log('안녕하세요');
+        // });
     });
 //});
 
