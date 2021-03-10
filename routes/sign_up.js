@@ -25,6 +25,7 @@ router.get('/', function(req,res){
     //res.render('signup', {title : 'Signup'});
     client.query(selectQ, function(err, members){
         res.render('signup', {members:members});
+        console.log('gdgd');
     });
 });
 
