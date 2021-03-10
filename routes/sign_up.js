@@ -29,9 +29,10 @@ router.get('/', function(req,res){
     });
 });
 console.log('하하');
+
 // POST!
 
-router.post('/sign_up', function(req,res,next){
+router.post('/', function(req,res,next){
     const body = req.body;
     console.log('POSTING');
     client.query(insertQ, [body.name, body.nick, body.email, body.pwd, body.birth], function(){
