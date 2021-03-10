@@ -12,6 +12,15 @@ const memRouter = require('./routes/member');
 
 const app = express();
 
+const mysql = require('mysql');
+const client = mysql.createConnection({
+    host: 'nodejs-008.cafe24.com',
+    user: 'betty970823',
+    password: 'KL@ttwhyo7D',
+    database: 'betty970823',
+    port: '3306',
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
