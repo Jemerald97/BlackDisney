@@ -22,22 +22,24 @@ const insertQ = 'INSERT INTO members (name, nick, email, pwd, birth) values (?, 
 // GET!
 
 router.get('/', function(req,res){
-    //res.render('signup', {title : 'Signup'});
+    res.render('signup', {title : 'signup'});
     client.query(selectQ, function(err, members){
-        res.render('signup', {members:members});
-        console.log('gdgd');
+        res.render({members : members});
+        console.error(err);
+        console.log('안녕~');
     });
 });
-console.log('하하');
 
 // POST!
 
 router.post('/', function(req,res,next){
     const body = req.body;
-    console.log('POSTING');
+    console.log('POSTING1');
     client.query(insertQ, [body.name, body.nick, body.email, body.pwd, body.birth], function(){
+        console.log('POSTING2');
         res.redirect('/');
-    })
+    });
+    console.log('POSTING3');
 });
 
 // router.post('/', function(req,res){
