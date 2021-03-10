@@ -28,7 +28,7 @@ router.get('/', function(req,res){
         console.log('gdgd');
     });
 });
-
+console.log('하하');
 // POST!
 
 router.post('/sign_up', function(req,res,next){
