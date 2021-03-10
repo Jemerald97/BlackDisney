@@ -1,0 +1,28 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <% include header %>
+    <h3><%= title %></h3>
+    
+    <form action="/login" method="POST">
+        <table>
+            <tr>
+                <td>email</td>
+                <td><input type="email" name="email" placeholder="이메일을 입력하세요."></td>
+            </tr>
+            <tr>
+                <td>password</td>
+                <td><input type="password" name="pwd" placeholder="비밀번호를 입력하세요."></td>
+            </tr>
+        </table>
+        <input type="submit" value="로그인">
+    </form>
+    <input type="button" value="아직 회원이 아니신가요?" onclick="moveup()">
+    <script src="/javascripts/index.js"></script>
+</body>
+</html>
