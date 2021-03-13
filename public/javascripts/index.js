@@ -7,3 +7,13 @@ function moveup(){
 function movein(){
     location.href = "/login";
 }
+
+//회원창 버튼 
+function member(){
+    location.href = "/member";
+}
+
+function index(){
+    location.href ="/";
+}
+
