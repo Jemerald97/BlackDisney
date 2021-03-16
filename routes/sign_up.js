@@ -14,12 +14,6 @@ app.use(bodyParser.urlencoded({extended : false}));
 
 router.get('/', function(req,res,next){
     res.render('signup', {title : 'signup'});
-    client.query('SELECT * FROM members', function(err, members){
-        res.render('signup',{
-            title : 'signup',
-            members : members
-        }); //어디 페이지에 렌더링해주는지 경로 설정해줘야 한다!!
-    });
 });
 
 router.post('/', function(req,res,next){
@@ -28,21 +22,53 @@ router.post('/', function(req,res,next){
     const nick = body.nick;
     const email = body.email;
     const pwd = body.pwd;
+    const cfPwd = body.cfPwd;
     const birth = body.birth;
 
     client.query('select * from members where nick = ?', [nick], function(err,data){
         if(data.length == 0){
             console.log('success');
-            client.query('INSERT INTO members (name, nick, email, pwd, birth) values (?, ?, ?, ?, ?)', [name, nick, email, pwd, birth], function(){
-                res.redirect('/');
-            });
+            if(pwd == cfPwd){
+                client.query('INSERT INTO members (name, nick, email, pwd, birth) values (?, ?, ?, ?, ?)', [name, nick, email, pwd, birth], function(){
+                    res.redirect('/');
+                });
+            }else{
+                res.send('<script>alert("비밀번호를 다시 확인하세요.");history.back();</script>');
+            }//전송할 것을 두 번 보내면 안된다!!
         }else{
             console.log('fail');
             res.send('<script>alert("회원가입 실패");</script>');
-            res.redirect('/sign_up');
         }
     });
 });
+
+router.post('/correct', function(req,res,next){
+    console.log('ajax 호출');
+    console.log(req.body.members);
+    const nick = req.body.members;
+    console.log(nick);
+    client.query('SELECT nick FROM members WHERE nick = ?', [nick], function(err, data){
+        if(err) console.log(err);
+        if(data.length == 0){
+            res.send({
+                correct : true
+            });
+            console.log('사용가능');
+        }else{
+            console.log(nick);
+            res.send({
+                correct : false
+            });
+        }
+    });
+});
+
+// client.query('SELECT * FROM members', function(err, members){
+//     res.render('signup',{
+//         title : 'signup',
+//         members : members
+//     }); //어디 페이지에 렌더링해주는지 경로 설정해줘야 한다!!
+// });
 
 // POST!
 //result[0].id == undefined
@@ -96,29 +122,14 @@ router.post('/', function(req,res,next){
 //     return true;
 // }
 
-// 2. 비밀번호 확인 
-//body.pwd === body.cfPwd
-
-
-
-// router.post('/', function(req,res,next){
-//     const body = req.body;
-//     const nick = body.nick;
-// })
 // 3. 회원가입 조건 
 // body.name.length > 2
 // body.nick.length > 1
 // body.pwd.length > 5
 
-
-
-
-
 //유효성 검사
 // async function isValid(req,res,next){
 //     await check()
 // }
-
-
 
 module.exports = router;

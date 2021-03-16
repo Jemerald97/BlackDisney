@@ -4,6 +4,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(function(){
+            console.log('ㅁㅇㅎ');
+            $('#correct').click(function(){
+                const nick = $("#nick").val();
+                $.ajax({
+                    url : "/sign_up/correct", //주소 경로
+                    dataType : 'json', //json 파일 형식으로 전송
+                    type : 'POST', //POST 로 전송
+                    data : {'members': nick}, //data 대입하기
+                    success  :(result)=>{ //결과 
+                        if(result['correct'] == true){
+                            $("font[name = correct_comment]").html('');
+                            $("font[name = correct_comment]").html('사용 가능합니다.');
+                        }else{
+                            $("font[name = correct_comment]").html('');
+                            $("font[name = correct_comment]").html('사용 불가능합니다.');
+                        }
+                    }
+                });
+            });
+        });
+        
+    </script>
 </head>
 <body>
     <% include header %>
@@ -17,8 +42,9 @@
             <tr>
                 <td>nickname</td>
                 <td>
-                    <input type="text" name="nick" placeholder="닉네임을 입력하세요." >
-                    <input type="button" value="중복확인" onclick = "idCheck()" >
+                    <input type="text" id = "nick" name="nick" placeholder="닉네임을 입력하세요." >
+                    <input type="button" id ="correct" value="중복확인">
+                    <font name = "correct_comment"></font>
                 </td>
             </tr>
             <tr>

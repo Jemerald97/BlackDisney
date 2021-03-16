@@ -44,9 +44,8 @@ router.post('/', function(req,res,next){
     const pwd = body.pwd;
 
     client.query('SELECT * FROM members WHERE nick = ?', [nick], function(err, members){
-        if(nick == members[0].nick || pwd == members[0].pwd){
+        if(nick == members[0].nick && pwd == members[0].pwd){
             console.log('로그인 성공');
-
             req.session.logined = true;
             req.session.name = members.name;
             req.session.nick = members.nick;
@@ -80,14 +79,6 @@ router.post('/', function(req,res,next){
     // })
 });
 
-app.get('/logout', function(req,res){
-    console.log('로그아웃 성공');
-    req.session.destroy(function(err){
-        req.session.nick;
-        req.session.pwd;
-        req.session.birth;
-        res.redirect('/');
-    });
-});
+
 
 module.exports = router;
