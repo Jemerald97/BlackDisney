@@ -15,7 +15,10 @@ app.use(bodyParser.urlencoded({extended : false}));
 router.get('/', function(req,res,next){
     res.render('signup', {title : 'signup'});
     client.query('SELECT * FROM members', function(err, members){
-        res.render('signup',{members : members}); //어디 페이지에 렌더링해주는지 경로 설정해줘야 한다!!
+        res.render('signup',{
+            title : 'signup',
+            members : members
+        }); //어디 페이지에 렌더링해주는지 경로 설정해줘야 한다!!
     });
 });
 

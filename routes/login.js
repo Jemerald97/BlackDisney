@@ -7,27 +7,13 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
-// const client = mysql.createConnection({
-//     user : 'root', 
-//     password : '0823', 
-//     database : 'lasvegas'
-// });
-
-//heidsql cafe24 로그인할 때 사용
-// const client = mysql.createConnection({
-//     host: 'nodejs-008.cafe24.com',
-//     user: 'betty970823',
-//     password: 'KL@ttwhyo7D',
-//     database: 'betty970823',
-//     port: '3306',
-// });
 
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 app.use(cookieParser()); //세션도 쿠키의 종류 
 //세션 사용 설정 
 router.use(session({
-    secret : 'asdjha!@#@#$dd', //쿠키를 임의로 변조하는 것을 방지하기 위한 값
+    secret : 'mintchoco', //쿠키를 임의로 변조하는 것을 방지하기 위한 값
     resave : false, //세션을 언제나 저장할지 정하는 값 : true로 하면 변경되지 않아도 값이 계속 저장된다. 
     saveUninitialized : true, //세션이 저장되기 전에 초기화하지 않고 저장할지 
 }));
@@ -35,12 +21,13 @@ router.use(session({
 router.get('/', function(req,res){
     if(req.session.logined == true){
         res.render('login', {
+            title : 'Login',
             logined : req.session.logined, 
             nick : req.session.nick
         });
     }else{
         res.render('login', {
-            title : 'Las Vegas',
+            title : 'Login',
             logined : false
         });
     }
@@ -66,6 +53,7 @@ router.post('/', function(req,res,next){
             req.session.pwd = members.pwd;
             req.session.save(function(){
                 res.render('index', {
+                    title : 'Las Vegas',
                     name : members[0].name,
                     nick : members[0].nick, 
                     birth : members[0].birth, 
