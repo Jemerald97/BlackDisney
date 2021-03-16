@@ -80,16 +80,16 @@ router.post('/', function(req,res,next){
         }
     });
 
-    client.query(searchQ, [body.nick], function(err,members){
-         if((undefined == members[0])&&(undefined == members[0])){
-            console.log('왜');
-            console.log('3', body.nick);
-            console.log('4', members[0]);
-            res.redirect('/login');
-        }else{
-            res.redirect('/index_mem');
-        }
-    })
+    // client.query(searchQ, [body.nick], function(err,members){
+    //      if((undefined == members[0])&&(undefined == members[0])){
+    //         console.log('왜');
+    //         console.log('3', body.nick);
+    //         console.log('4', members[0]);
+    //         res.redirect('/login');
+    //     }else{
+    //         res.redirect('/');
+    //     }
+    // })
 });
 
 app.get('/logout', function(req,res){
