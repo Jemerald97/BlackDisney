@@ -28,6 +28,16 @@ router.get('/', function(req, res, next) {
   }
 });
 
+app.get('/logout', function(req,res){
+  console.log('로그아웃 성공');
+  req.session.destroy(function(err){
+      req.session.nick;
+      req.session.pwd;
+      req.session.birth;
+      res.redirect('/');
+  });
+});
+
 //초기 값으로 세션 접근
 // app.get('/', function(req,res){
 //   const sess = req.session;
