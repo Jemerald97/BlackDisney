@@ -13,7 +13,7 @@ function member(){
     location.href = "/member";
 }
 
-function index(){
-    location.href ="/";
+function logout(){
+    location.href ="/logout";
 }
 

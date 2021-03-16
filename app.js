@@ -4,7 +4,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session');
 //const expressValidator = require('express-validator');
+
 
 //라우터 모음
 const indexRouter = require('./routes/index');
@@ -17,14 +19,6 @@ const indexMemRouter = require('./routes/index_mem');
 
 const app = express();
 
-//const mysql = require('mysql');
-// const client = mysql.createConnection({
-//     host: 'nodejs-008.cafe24.com',
-//     user: 'betty970823',
-//     password: 'KL@ttwhyo7D',
-//     database: 'betty970823',
-//     port: '3306',
-// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +30,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret : 'mintchoco', 
+  resave : false, 
+  saveUninitialized : true
+}));
+
 //app.use(expressValidator());
 
 //라우터 등록

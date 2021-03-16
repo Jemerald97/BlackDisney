@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const client = require('./mysql');
 const ejs = require('ejs');
 const { checkout } = require('../app');
 const app = express();
@@ -10,42 +10,34 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended : false}));
 
-/*heidsql cafe24 로그인할 때 사용
-const client = mysql.createConnection({
-    host: 'nodejs-008.cafe24.com',
-    user: 'betty970823',
-    password: 'KL@ttwhyo7D',
-    database: 'betty970823',
-    port: '3306',
-});*/
-// mysql 로그인할 때 사용
-const client = mysql.createConnection({
-    user:'root',
-    password:'0823',
-    database:'lasvegas'
-});
-
-//쿼리문 작성
-// const selectQ = 'SELECT (members.name, members.nick) FROM members WHERE nick = ?';
-const selectQ = 'SELECT * FROM members';
-const insertQ = 'INSERT INTO members (name, nick, email, pwd, birth) values (?, ?, ?, ?, ?)';
-
-//SELECT members.name FROM members WHERE nick = "d";
-
 // GET!
 
 router.get('/', function(req,res,next){
     res.render('signup', {title : 'signup'});
-    client.query(selectQ, function(err, members){
+    client.query('SELECT * FROM members', function(err, members){
         res.render('signup',{members : members}); //어디 페이지에 렌더링해주는지 경로 설정해줘야 한다!!
     });
 });
 
 router.post('/', function(req,res,next){
     const body = req.body;
-    //const name = body.name; //입력 값과 데이터베이스 값과 일치하는 것을 찾는다. 
-    client.query(insertQ, [body.name, body.nick, body.email, body.pwd, body.birth], function(){
-        res.redirect('/');
+    const name = body.name;
+    const nick = body.nick;
+    const email = body.email;
+    const pwd = body.pwd;
+    const birth = body.birth;
+
+    client.query('select * from members where nick = ?', [nick], function(err,data){
+        if(data.length == 0){
+            console.log('success');
+            client.query('INSERT INTO members (name, nick, email, pwd, birth) values (?, ?, ?, ?, ?)', [name, nick, email, pwd, birth], function(){
+                res.redirect('/');
+            });
+        }else{
+            console.log('fail');
+            res.send('<script>alert("회원가입 실패");</script>');
+            res.redirect('/sign_up');
+        }
     });
 });
 

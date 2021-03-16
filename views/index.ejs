@@ -8,8 +8,12 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <% include header %>
-    
-    <input type="button" value="로그인" onclick="movein()">
+    <% if(logined == false){ %> 
+      <input type="button" value="로그인" onclick="movein()">
+    <% }else{ %> 
+      <p>Welcome <%= nick %></p>
+      <input type="button" value="로그아웃" onclick=logout();>
+    <% } %> 
   </body>
   <script src="/javascripts/index.js"></script>
 </html>

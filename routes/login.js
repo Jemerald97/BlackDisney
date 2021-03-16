@@ -1,41 +1,85 @@
 const express = require('express');
 const mysql = require('mysql');
+const client = require('./mysql');
 const router = express.Router();
 const app = express();
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
 // const client = mysql.createConnection({
 //     user : 'root', 
 //     password : '0823', 
 //     database : 'lasvegas'
 // });
+
 //heidsql cafe24 로그인할 때 사용
-const client = mysql.createConnection({
-    host: 'nodejs-008.cafe24.com',
-    user: 'betty970823',
-    password: 'KL@ttwhyo7D',
-    database: 'betty970823',
-    port: '3306',
-});
-const selectQ = 'SELECT * FROM members';
-const searchQ = 'SELECT nick, pwd FROM members WHERE nick = ?';
+// const client = mysql.createConnection({
+//     host: 'nodejs-008.cafe24.com',
+//     user: 'betty970823',
+//     password: 'KL@ttwhyo7D',
+//     database: 'betty970823',
+//     port: '3306',
+// });
 
 app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.json());
+app.use(cookieParser()); //세션도 쿠키의 종류 
 //세션 사용 설정 
-// app.use(session({
-//     secret : 'asdjha!@#@#$dd', 
-//     resave : false,
-//     saveUninitialized : true
-// }))
+router.use(session({
+    secret : 'asdjha!@#@#$dd', //쿠키를 임의로 변조하는 것을 방지하기 위한 값
+    resave : false, //세션을 언제나 저장할지 정하는 값 : true로 하면 변경되지 않아도 값이 계속 저장된다. 
+    saveUninitialized : true, //세션이 저장되기 전에 초기화하지 않고 저장할지 
+}));
 
-router.get('/', (req,res,next)=>{
-    res.render('login', { title: 'Login' }); //파일
-    client.query(selectQ, function(err, members){
-        res.render('login',{members : members}); //ejs에서 쓰려고 하는 값 : 쿼리문 결과 값
-    });
+router.get('/', function(req,res){
+    if(req.session.logined == true){
+        res.render('login', {
+            logined : req.session.logined, 
+            nick : req.session.nick
+        });
+    }else{
+        res.render('login', {
+            title : 'Las Vegas',
+            logined : false
+        });
+    }
 });
+
+//ejs에서 쓰려고 하는 값 : 쿼리문 결과 값
+//res.render('login',{members : members}); 
+
+const searchQ = 'SELECT nick, pwd FROM members WHERE nick = ?';
 
 router.post('/', function(req,res,next){
     const body = req.body;
+    const nick = body.nick;
+    const pwd = body.pwd;
+
+    client.query('SELECT * FROM members WHERE nick = ?', [nick], function(err, members){
+        if(nick == members[0].nick || pwd == members[0].pwd){
+            console.log('로그인 성공');
+
+            req.session.logined = true;
+            req.session.name = members.name;
+            req.session.nick = members.nick;
+            req.session.pwd = members.pwd;
+            req.session.save(function(){
+                res.render('index', {
+                    name : members[0].name,
+                    nick : members[0].nick, 
+                    birth : members[0].birth, 
+                    logined : true
+                });
+            });
+        }else{
+            console.log('로그인 실패');
+            res.render('login', {
+                title : 'Las Vegas'
+            });
+        }
+    });
+
     client.query(searchQ, [body.nick], function(err,members){
          if((undefined == members[0])&&(undefined == members[0])){
             console.log('왜');
@@ -46,6 +90,16 @@ router.post('/', function(req,res,next){
             res.redirect('/index_mem');
         }
     })
+});
+
+app.get('/logout', function(req,res){
+    console.log('로그아웃 성공');
+    req.session.destroy(function(err){
+        req.session.nick;
+        req.session.pwd;
+        req.session.birth;
+        res.redirect('/');
+    });
 });
 
 module.exports = router;
