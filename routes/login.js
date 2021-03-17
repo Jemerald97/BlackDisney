@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
-
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 app.use(cookieParser()); //세션도 쿠키의 종류 
@@ -15,7 +14,7 @@ app.use(cookieParser()); //세션도 쿠키의 종류
 router.use(session({
     secret : 'mintchoco', //쿠키를 임의로 변조하는 것을 방지하기 위한 값
     resave : false, //세션을 언제나 저장할지 정하는 값 : true로 하면 변경되지 않아도 값이 계속 저장된다. 
-    saveUninitialized : true, //세션이 저장되기 전에 초기화하지 않고 저장할지 
+    saveUninitialized : true //세션이 저장되기 전에 초기화하지 않고 저장할지 
 }));
 
 router.get('/', function(req,res){
@@ -47,9 +46,9 @@ router.post('/', function(req,res,next){
         if(nick == members[0].nick && pwd == members[0].pwd){
             console.log('로그인 성공');
             req.session.logined = true;
-            req.session.name = members.name;
-            req.session.nick = members.nick;
-            req.session.pwd = members.pwd;
+            req.session.name = members[0].name;
+            req.session.nick = members[0].nick;
+            req.session.pwd = members[0].pwd;
             req.session.save(function(){
                 res.render('index', {
                     title : 'Las Vegas',
@@ -78,7 +77,5 @@ router.post('/', function(req,res,next){
     //     }
     // })
 });
-
-
 
 module.exports = router;

@@ -14,11 +14,10 @@ const indexRouter = require('./routes/index');
 const signRouter = require('./routes/sign_up');
 const loginRouter = require('./routes/login');
 const memRouter = require('./routes/member');
-//const communityRouter = require('./routes/community');
-const indexMemRouter = require('./routes/index_mem');
+const gameRouter = require('./routes/game');
+const communityRouter = require('./routes/community');
 
 const app = express();
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,8 +43,8 @@ app.use('/', indexRouter);
 app.use('/sign_up', signRouter);
 app.use('/login', loginRouter);
 app.use('/member', memRouter);
-//app.use('/community', communityRouter);
-app.use('/index_mem', indexMemRouter);
+app.use('/game', gameRouter);
+app.use('/community', communityRouter);
 
 //에러 처리
 // catch 404 and forward to error handler

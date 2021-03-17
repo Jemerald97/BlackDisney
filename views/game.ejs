@@ -4,15 +4,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-
-    <style>
-
-    </style>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/game.css">
 </head>
 <body>
     <% include header %>
-    <div>
 
+    <div class = "player"></div>
+    <input type="button" id = "start" value="start" onclick=start()>
+    <div class = "betting">
+        <div class ="casino">
+            
+            <input type="button" id = "one"class="select" value="1" onclick=selectDice(1)>
+        </div>
+        <div class ="casino">
+            <input type="button" id = "two"class="select" value="2" onclick=selectDice(2)>
+        </div>
+        <div class ="casino">
+            <input type="button" id = "three"class="select" value="3" onclick=selectDice(3)>
+        </div>
+        <div class ="casino">
+            <input type="button" id = "four"class="select" value="4" onclick=selectDice(4)>
+        </div>
+        <div class ="casino">
+            <input type="button" id = "five"class="select" value="5" onclick=selectDice(5)>
+        </div>
+        <div class ="casino">
+            <input type="button" id = "six"class="select" value="6" onclick=selectDice(6)>
+        </div>
     </div>
 </body>
+<script src = "/javascripts/game.js"></script>
 </html>

@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-//const app = require('../app');
 const session = require('express-session');
 
 router.use(session({
@@ -11,7 +10,6 @@ router.use(session({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log('11111111111');
   console.log(req.session);
   if(req.session.logined == true){
     res.render('index', { 
@@ -20,9 +18,8 @@ router.get('/', function(req, res, next) {
       nick : req.session.nick
     });
   }else{
-    console.log('222222');
     res.render('index', {
-      title : 'Las Vegas',
+      title : 'Las vegas', 
       logined : false
     });
   }
@@ -34,10 +31,5 @@ router.get('/logout', function(req,res){
       res.redirect('/');
   });
 });
-
-//초기 값으로 세션 접근
-// app.get('/', function(req,res){
-//   const sess = req.session;
-// });
 
 module.exports = router;
