@@ -1,32 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const client = require('./mysql');
 const session = require('express-session');
 
-//쿼리문 작성
-router.use(session({
-    secret : 'mintchoco', 
-    resave : false, 
-    saveUninitialized : true
-}));
-
-router.get('/', function(req, res, next){
-    res.render('community', { title : '1등 자랑 게시판!'});
-});
-
 router.get('/', function(req, res, next) {
-  console.log(req.session);
-  if(req.session.logined == true){
-    res.render('community', { 
-      title : '1등 자랑 게시판', 
-      logined : req.session.logined,
-      nick : req.session.nick
-    });
-  }else{
+  const nick = req.session.nick;
+  client.query('SELECT * FROM members WHERE nick = ?', [nick], function(err,data){
     res.render('community', {
-      title : '1등 자랑 게시판', 
-      logined : false
+      title : 'myAttraction',
+      nick : nick,
+      logined : true
     });
-  }
+  });
 });
+
+router.post('/', function(req,res,next){
+  const 
+})
 
 module.exports = router;
