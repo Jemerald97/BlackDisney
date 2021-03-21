@@ -1,0 +1,28 @@
+.main{
+    width : 100%;
+    top : 0%;
+}
+#btn{
+    border : none;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-color: transparent;
+    background-image: url("../images/mickey.jpg");
+    cursor: pointer;
+  }
+  .btn_container{
+    background-image: url("../public/images/mickey.jpg");
+  }
+  .btn_login{
+    color : white;
+    background-color : transparent;
+    border : none;
+    background-image : url("../public/images/mickey.jpg");
+    cursor: pointer;
+  }
+  .title{
+    color : white;
+  }
+  .welcome{
+    color : white;
+  }

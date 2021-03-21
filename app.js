@@ -7,7 +7,6 @@ const logger = require('morgan');
 const session = require('express-session');
 //const expressValidator = require('express-validator');
 
-
 //라우터 모음
 const indexRouter = require('./routes/index');
 //const usersRouter = require('./routes/users');
@@ -15,6 +14,9 @@ const signRouter = require('./routes/sign_up');
 const loginRouter = require('./routes/login');
 const memRouter = require('./routes/member');
 const gameRouter = require('./routes/game');
+const reserveRouter = require('./routes/reserve');
+const writeRouter = require('./routes/write');
+const viewRouter =require('./routes/view');
 const communityRouter = require('./routes/community');
 
 const app = express();
@@ -44,6 +46,9 @@ app.use('/sign_up', signRouter);
 app.use('/login', loginRouter);
 app.use('/member', memRouter);
 app.use('/game', gameRouter);
+app.use('/reserve', reserveRouter)
+app.use('/write', writeRouter);
+app.use('/view', viewRouter);
 app.use('/community', communityRouter);
 
 //에러 처리

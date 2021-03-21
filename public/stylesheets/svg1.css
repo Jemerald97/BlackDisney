@@ -1,0 +1,23 @@
+.svg-body{
+  background-color: black;
+}
+.svg-container{
+  /* position: relative;
+  width : 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; */
+}
+.svg-container .svg-icon{
+  width : 10%;
+}
+.svg-container .svg-icon path{
+  fill : transparent;
+  stroke-width: 1;
+  stroke : #ffffff ;
+  /* stroke-dasharray: 1560;
+  stroke-dashoffset: 1560; */
+}
+.svg-container .svg-icon{
+
+}

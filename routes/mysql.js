@@ -13,6 +13,7 @@ const client = mysql.createConnection({
     password: 'KL@ttwhyo7D',
     database: 'betty970823',
     port: '3306',
+    multipleStatements : true
 });
 
 module.exports = client;

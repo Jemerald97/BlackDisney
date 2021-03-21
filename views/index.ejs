@@ -2,18 +2,28 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/svg1.css' />
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <style>
+
+    </style>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <% include header %>
+    <!-- <img class = "main" src="/images/main.jpg" alt="메인화면"> -->
+    <h1 class = "title"><%= title %></h1>
+    <p class = "welcome">Welcome to <%= welcome %></p>
+    <% include svg1 %>
     <% if(logined == false){ %> 
-      <input type="button" value="로그인" onclick="movein()">
+      <% include login %> 
+      <div class = "btn_container">
+        <input class = "btn_login" type="button" value="login" onclick="movein()" >
+      </div>
+      
     <% }else{ %> 
       <p>Welcome <%= nick %></p>
-      <input type="button" value="마이페이지" onclick="member()">
-      <input type="button" value="로그아웃" onclick="logout()";>
+      <input class = "btn_mypage" type="button" value="마이페이지" onclick="member()">
+      <input class = "btn_logout" type="button" value="로그아웃" onclick="logout()">
+      <input class = "btn_write" type="button" value="커뮤니티" onclick= "community()">
     <% } %> 
   </body>
   <script src="/javascripts/index.js"></script>

@@ -3,17 +3,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hh</title>
+    <title><%= title %> </title>
 
 </head>
 <body>
+    <h2><%= title %></h2>
     <div class = "total">
         <div class = "left">
             <div class = "user">
                 <p><%= nick %>'s Page</p>
             </div>
             <div class = "myAttractions">
-                <% myAttractions %> 
+                <p><%= attraction1 %> </p>
+                <p><%= attraction2 %> </p>
+                <p><%= attraction3 %> </p>
             </div>
         </div>
         <div class = "right">
@@ -21,8 +24,11 @@
             <div class = "community">
                 
             </div>
-        
+            <div>
+                <input type="button" value="reserve" onclick=reserve()>
+            </div>
         </div>
     </div>
 </body>
+<script src="/javascripts/index.js"></script>
 </html>

@@ -1,0 +1,39 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/view.css">
+</head>
+<body>
+    <% include header %>
+    <h2><%= title %></h2>
+    <div class = "chat"></div>
+    <ul>
+        <li>Attractions</li>
+        <li><img src="" alt="">이미지</li>
+        <% data.forEach(function(item, index){ %>
+            <li>comment</li>
+            <% if(logined==true && item.nick == nick){ %>
+                <% if(update == true && item.num == num){ %>
+                    <form action="/view/submit/<%= item.num %> " method = "POST">
+                        <input type="text" name = "updateComment" value="<%= item.comment %> ">
+                        <input type="submit" value = "confirm">
+                    </form>
+                    <a href="/view/delete/<%= item.num %>">delete</a>
+                <% }else{ %>
+                    <a href = ""><%= item.comment %></a>
+                    <a href="/view/update/<%= item.num %> ">update</a>
+                    <a href="/view/delete/<%= item.num %>">delete</a>
+                <% } %>
+            <% }else{ %>
+                <a href = ""><%= item.comment %></a>
+            <% } %>
+            <li>created</li>
+            <li><%= item.created_at %></li>
+        <% }) %>
+    </ul>
+</body>
+<script src="/javascripts/index.js"></script>
+</html>

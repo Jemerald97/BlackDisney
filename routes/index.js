@@ -13,13 +13,15 @@ router.get('/', function(req, res, next) {
   console.log(req.session);
   if(req.session.logined == true){
     res.render('index', { 
-      title : 'Las Vegas', 
+      title : 'Black Disney', 
+      welcome : 'Black Disney in Las Vegas',
       logined : req.session.logined,
       nick : req.session.nick
     });
   }else{
     res.render('index', {
-      title : 'Las vegas', 
+      title : 'Black Disney', 
+      welcome : 'Black Disney in Las Vegas',
       logined : false
     });
   }

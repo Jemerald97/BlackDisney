@@ -35,8 +35,6 @@ router.get('/', function(req,res){
 //ejs에서 쓰려고 하는 값 : 쿼리문 결과 값
 //res.render('login',{members : members}); 
 
-const searchQ = 'SELECT nick, pwd FROM members WHERE nick = ?';
-
 router.post('/', function(req,res,next){
     const body = req.body;
     const nick = body.nick;
@@ -51,7 +49,8 @@ router.post('/', function(req,res,next){
             req.session.pwd = members[0].pwd;
             req.session.save(function(){
                 res.render('index', {
-                    title : 'Las Vegas',
+                    title : 'Black Disney', 
+                    welcome : 'Black Disney in Las Vegas',
                     name : members[0].name,
                     nick : members[0].nick, 
                     birth : members[0].birth, 
@@ -61,7 +60,8 @@ router.post('/', function(req,res,next){
         }else{
             console.log('로그인 실패');
             res.render('login', {
-                title : 'Las Vegas'
+                title : 'Black Disney', 
+                welcome : 'Black Disney in Las Vegas'
             });
         }
     });

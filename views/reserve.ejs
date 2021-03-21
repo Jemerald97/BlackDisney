@@ -1,0 +1,22 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <% include header %>
+    <h2><%= title %></h2>
+    <form action="/reserve" method="POST">
+        <select name="attractions" id="attractions">
+            <option value="Alice">Alice in Wonderland</option>
+            <option value="Train">Circus Train</option>
+            <option value="Dumbo">Dumbo</option>
+            <option value="Golden">Golden Zephyr</option>
+        </select>
+        <input type="submit" value = "reserve">
+    </form>
+</body>
+<script src="/javascripts/index.js"></script>
+</html>
