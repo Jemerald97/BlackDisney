@@ -2,29 +2,49 @@
 <html>
   <head>
     <title><%= title %></title>
+    <style>
+      canvas{
+        background: transparent;
+        width: 100vw;
+        height: 85vh;
+        padding: 0;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+    </style>
+
     <link rel='stylesheet' href='/stylesheets/svg1.css' />
     <link rel="stylesheet" href="/stylesheets/index.css">
     <style>
-
+      p{
+        color : white;
+      }
     </style>
   </head>
   <body>
     <!-- <img class = "main" src="/images/main.jpg" alt="메인화면"> -->
-    <h1 class = "title"><%= title %></h1>
-    <p class = "welcome">Welcome to <%= welcome %></p>
-    <% include svg1 %>
-    <% if(logined == false){ %> 
-      <% include login %> 
-      <div class = "btn_container">
-        <input class = "btn_login" type="button" value="login" onclick="movein()" >
-      </div>
-      
-    <% }else{ %> 
-      <p>Welcome <%= nick %></p>
-      <input class = "btn_mypage" type="button" value="마이페이지" onclick="member()">
-      <input class = "btn_logout" type="button" value="로그아웃" onclick="logout()">
-      <input class = "btn_write" type="button" value="커뮤니티" onclick= "community()">
-    <% } %> 
+    <h1 class = "welcome">Welcome to <%= welcome %></h1>
+    <div>
+      <% //include svg1 %>
+      <% if(logined == false){ %> 
+        <div class = "login-position">
+          <% include login %> 
+        </div>
+        
+        
+      <% }else{ %> 
+        <p>Welcome <%= nick %></p>
+        <!-- <canvas class = "index-position"></canvas> -->
+        <input class = "btn_mypage" type="button" value="마이페이지" onclick="member()">
+        <input class = "btn_logout" type="button" value="로그아웃" onclick="logout()">
+        <input class = "btn_write" type="button" value="커뮤니티" onclick= "community()">
+      <% } %> 
+    </div>
+    <script src="/javascripts/index.js"></script>
+    <script src="/javascripts/animate.js" ></script>
   </body>
-  <script src="/javascripts/index.js"></script>
+  
 </html>

@@ -4,25 +4,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <link rel="stylesheet" href="../stylesheets/login.css">
 </head>
 <body>
-    <% include header %>
-    <h3><%= title %></h3>
-    
     <form action="/login" method="POST">
-        <table>
-            <tr>
-                <td>nickname</td>
-                <td><input type="text" name="nick" placeholder="닉네임을 입력하세요."></td>
-            </tr>
-            <tr>
-                <td>password</td>
-                <td><input type="password" name="pwd" placeholder="비밀번호를 입력하세요."></td>
-            </tr>
-        </table>
-        <input type="submit" value="로그인">
+        <p class = "label-nick">nickname</p>
+        <input class = "input-nick"type="text" name="nick" placeholder="닉네임을 입력하세요.">
+        <p class = "label-pwd">password</p>
+        <input class = "input-pwd" type="password" name="pwd" placeholder="비밀번호를 입력하세요.">
+        <input class = "submit-login" type="submit" value="login">
     </form>
-    <input type="button" value="아직 회원이 아니신가요?" onclick="moveup()">
+    <input class = "input-signup" type="button" value="Join Us!" onclick="moveup()">
     <script src="/javascripts/index.js"></script>
 </body>
 </html>

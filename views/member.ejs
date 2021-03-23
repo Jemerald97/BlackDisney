@@ -14,19 +14,29 @@
                 <p><%= nick %>'s Page</p>
             </div>
             <div class = "myAttractions">
-                <p><%= attraction1 %> </p>
-                <p><%= attraction2 %> </p>
-                <p><%= attraction3 %> </p>
+                <ul>
+                    <li><%= attraction1 %></li>
+                    <li><%= attraction2 %></li>
+                    <li><%= attraction3 %></li>
+                </ul>
             </div>
         </div>
         <div class = "right">
 
-            <div class = "community">
-                
-            </div>
-            <div>
-                <input type="button" value="reserve" onclick=reserve()>
-            </div>
+            <% if(ticket == true){ %>
+                <div class = "ticket">
+                    <div class = "ticket-nick"><%= nick %></div>
+                    <div class = "ticket-date"><%= date %></div>
+                    <div class = "ticket-head"><%= head %></div>
+                    <!-- 2인일 때 띄우는 이미지 -->
+                    <!-- <% //if(data[0].head == 2){ %>
+                        <img src="" alt="">
+                    <% //} %>  -->
+                </div>
+            <% }else{ %>
+                <p>예약한 티켓이 없습니다!</p>
+            <% } %> 
+            <a href="/reserve">reserve</a>
         </div>
     </div>
 </body>

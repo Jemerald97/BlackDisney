@@ -17,10 +17,6 @@ function logout(){
     location.href ="/logout";
 }
 
-function reserve(){
-    location.href = "/reserve";
-}
-
 function community(){
     location.href = "/community";
 }

@@ -4,19 +4,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="../stylesheets/reserve.css">
 </head>
 <body>
     <% include header %>
     <h2><%= title %></h2>
-    <form action="/reserve" method="POST">
-        <select name="attractions" id="attractions">
-            <option value="Alice">Alice in Wonderland</option>
-            <option value="Train">Circus Train</option>
-            <option value="Dumbo">Dumbo</option>
-            <option value="Golden">Golden Zephyr</option>
-        </select>
-        <input type="submit" value = "reserve">
+    <!-- 티켓 구매 -->
+    <form action="/reserve/ticket" method = "POST">
+        <input type="date" name="reserveDate" min="2021-03-25" max="2021-04-25">
+        <input class = "slider-range" type="range" name = "headCount" value = "1" min="1" max="4" step = "1">
+        <font id = "slider-value">1</font>
+        <input type="submit" value = "Buy Ticket">
     </form>
+
+    <!-- 어트랙션 패스권 -->
+    <form action="/reserve/pass" method="POST">
+        <span class = "dropdown">
+            <input type = "radio" name = "attraction" id = "a" value="Alice in Wonderland" checked = "checked"><label for="a">Alice in Wonderland</label>
+            <input type = "radio" name = "attraction" id = "b" value="Buzz Lightyear Astro Blasters"><label for="b">Buzz Lightyear Astro Blasters</label>
+            <input type = "radio" name = "attraction" id = "c" value="Circus Train"><label for="c">Circus Train</label>
+            <input type = "radio" name = "attraction" id = "d" value="Dumbo the Flying Elephant"><label for="d">Dumbo the Flying Elephant</label>
+            <input type = "radio" name = "attraction" id = "g" value="Golden Zephyr"><label for="g">Golden Zephyr</label>
+            <input type = "radio" name = "attraction" id = "i" value="Incredicoster"><label for="i">Incredicoster</label>
+            <input type = "radio" name = "attraction" id = "r" value="Riverboat"><label for="r">Riverboat</label>
+            <input type = "radio" name = "attraction" id = "s" value="Space Mountain"><label for="s">Space Mountain</label>
+        </span>
+        <input type="submit" value = "Free Pass">
+    </form>
+
+
+    <script>
+        // 티켓 선택
+        function SliderValue(val){
+            let obValueView = document.getElementById('slider-value');
+            obValueView.innerHTML = val;
+        }
+        let rangeSlider = function(){
+            let range = $(`.slider-range`);
+            range.on('input', function(){
+                SliderValue(this.value);
+            });
+        }
+        
+        rangeSlider();
+
+        //패스권 선택
+        $('.dropdown').click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).toggleClass('expanded');
+            $('#'+$(e.target).attr('for')).prop('checked',true);
+        });
+        $(document).click(function() {
+            $('.dropdown').removeClass('expanded');
+        });
+    </script>
+    <script src="/javascripts/index.js"></script>
 </body>
-<script src="/javascripts/index.js"></script>
+
+
 </html>

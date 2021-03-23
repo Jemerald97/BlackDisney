@@ -2,23 +2,26 @@
     width : 100%;
     top : 0%;
 }
-#btn{
+/* #btn{
     border : none;
     background-repeat: no-repeat;
     background-position: 0px 0px;
     background-color: transparent;
     background-image: url("../images/mickey.jpg");
     cursor: pointer;
-  }
-  .btn_container{
+  } */
+  /* .btn_container{
     background-image: url("../public/images/mickey.jpg");
-  }
-  .btn_login{
+  } */
+  /* .btn_login{
     color : white;
     background-color : transparent;
     border : none;
     background-image : url("../public/images/mickey.jpg");
     cursor: pointer;
+  } */
+  .login-position{
+    /* position: relative; */
   }
   .title{
     color : white;
@@ -26,3 +29,13 @@
   .welcome{
     color : white;
   }
+.btn-mypage{
+  z-index : 2;
+}
+.btn-logout{
+  z-index : 2;
+}
+
+.btn-write{
+  z-index : 2;
+}

@@ -13,9 +13,11 @@ const client = require('./mysql');
         attraction1 : data[0].attraction1,
         attraction2 : data[0].attraction2,
         attraction3 : data[0].attraction3,
-        logined : true
+        logined : true, 
+        ticket : false
       });
     });
   });
+
 
 module.exports = router; 

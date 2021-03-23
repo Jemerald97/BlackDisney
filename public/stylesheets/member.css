@@ -1,0 +1,9 @@
+.myAttractions ul li{
+    /* display : list-item; */
+    list-style-image: url("../../paris.svg");
+}
+.ticket{
+    display : flex;
+    
+}
+
