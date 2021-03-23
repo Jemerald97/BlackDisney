@@ -10,6 +10,7 @@ router.get('/:id', function(req, res, next) {
   client.query('SELECT * FROM comments WHERE attraction = ?', [id], function(err,data){
     res.render('view', {
       title : 'Attraction'+id,
+      id : id,
       data : data,
       nick : nick,
       logined : true, 
