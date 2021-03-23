@@ -28,7 +28,7 @@
     <!-- <img class = "main" src="/images/main.jpg" alt="메인화면"> -->
     <h1 class = "welcome">Welcome to <%= welcome %></h1>
     <div>
-      <% include svg1 %>
+      <% //include svg1 %>
       <% if(logined == false){ %> 
         <div class = "login-position">
           <% include login %> 
@@ -36,7 +36,7 @@
         
       <% }else{ %> 
         <p>Welcome <%= nick %></p>
-        <canvas class = "index-position"></canvas>
+        <!-- <canvas class = "index-position"></canvas> -->
         <input class = "btn_mypage" type="button" value="마이페이지" onclick="member()">
         <input class = "btn_logout" type="button" value="로그아웃" onclick="logout()">
         <input class = "btn_write" type="button" value="커뮤니티" onclick= "community()">

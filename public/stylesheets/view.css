@@ -1,3 +1,17 @@
+a{
+  color: inherit;
+}
+.chat ul li{
+  list-style-image: url("../public/images/1.png");
+}
+body{
+  color : white;
+  background-color: black;
+}
+.fas-container{
+  font-size: 1em; 
+  color : white;
+}
 .chat {
   width: 120px;
   height: 80px;
