@@ -8,15 +8,16 @@
       p{
         color : white;
       }
+      a{
+        color : white;
+      }
     </style>
   </head>
   <body>
-    
     <div>
-      
       <% if(logined == false){ %> 
         <h1 class = "welcome">Welcome to <%= welcome %></h1>
-        <% //include svg1 %>
+        <% include svg1 %>
         <div class = "login-position">
           <% include login %> 
         </div>
@@ -26,11 +27,11 @@
           <span class="fast-flicker">Welcome</span><span class="flicker"><%= nick %></span>
         </div>
         <canvas class = "index-position"></canvas>
-        <% //include svg1 %>
+        <% include svg1 %>
         
-        <input class = "btn_mypage" type="button" value="마이페이지" onclick="member()">
-        <input class = "btn_logout" type="button" value="로그아웃" onclick="logout()">
-        <input class = "btn_write" type="button" value="커뮤니티" onclick= "community()">
+        <a href="/member">마이페이지</a>
+        <a href="/logout">로그아웃</a>
+        <a href="/community">커뮤니티</a>
       <% } %> 
       
     </div>
