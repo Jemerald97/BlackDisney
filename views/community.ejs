@@ -13,9 +13,9 @@
     <% for(let i = 1; i<7; i++){ %>
         <% let attraction = ['Alice in Wonderland', 'Buzz Lightyear Astro Blasters', 'Circus Train', 'Dumbo the Flying Elephant', 'Incredicoster', 'Riverboat'];  %> 
         <a href="/view/<%= i %>"><%= attraction[i] %></a>
-        <img src="../public/images/" alt="어트랙션">
+        <img class = "attraction-img" src="../images/play<%= i %>.jpg" alt="어트랙션">
         <div id = "map<%= i %>" style = "width:15%; height:25%; border-radius: 15%;"></div>
-    <% } %> 
+    <% } %>
     <script>
         const arr = [37.29304086500388, 127.19975061807155, 37.2994311712151, 127.20032962432335, 37.292981692433294, 127.20132783822574, 37.292570288481706, 127.19929758794748, 37.293994284694385, 127.20047938343201, 37.29784799201356, 127.20038863292037];
         function shibal(i){
