@@ -138,5 +138,15 @@ function start(){
     // }
 //}
 
+let today = new Date();
+console.log(today);
+let hours = today.getHours(); // 시
+let minutes = today.getMinutes();  // 분
+let seconds = today.getSeconds();  // 초
 
+console.log(hours);
+console.log(minutes);
+console.log(seconds);
 
+let time = hours + ':' + minutes + ':' + seconds;
+console.log(time);

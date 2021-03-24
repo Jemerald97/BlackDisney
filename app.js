@@ -9,7 +9,6 @@ const session = require('express-session');
 
 //라우터 모음
 const indexRouter = require('./routes/index');
-//const usersRouter = require('./routes/users');
 const signRouter = require('./routes/sign_up');
 const loginRouter = require('./routes/login');
 const memRouter = require('./routes/member');
@@ -18,6 +17,7 @@ const reserveRouter = require('./routes/reserve');
 const writeRouter = require('./routes/write');
 const viewRouter =require('./routes/view');
 const communityRouter = require('./routes/community');
+const passRouter = require('./routes/pass');
 
 const app = express();
 
@@ -41,7 +41,6 @@ app.use(session({
 
 //라우터 등록
 app.use('/', indexRouter);
-//app.use('/users', usersRouter);
 app.use('/sign_up', signRouter);
 app.use('/login', loginRouter);
 app.use('/member', memRouter);
@@ -50,6 +49,7 @@ app.use('/reserve', reserveRouter)
 app.use('/write', writeRouter);
 app.use('/view', viewRouter);
 app.use('/community', communityRouter);
+app.use('/pass', passRouter);
 
 //에러 처리
 // catch 404 and forward to error handler

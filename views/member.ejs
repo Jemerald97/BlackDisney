@@ -5,16 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %> </title>
     <link rel="stylesheet" href="../stylesheets/member.css">
+    <style>
+        .ticket-img{
+            width : 80%;
+            height : 60%;
+        }
+    </style>
 </head>
 <body>
-        <h2><%= nick %>'s Page</h2>
+    <h2><%= nick %>'s Page</h2>
     <div class = "total">
                 <% if(ticket == true){ %>
                 <div class = "ticket">
                     <div class = "ticket-left">
-                        <div class = "ticket-title">Happy DISNEYDAY</div>
+                       <div class="box-with-text">
+                                Happy BLACK DISNEY
+                        </div>
                         <div class = "label-name">NAME</div>
-                        <div class = "ticket-name">이거 이름으로 바꿔라</div>
+                        <div class = "ticket-name"><%= name %></div>
                         <div class = "label-desti">DESTINATION</div>
                         <div class = "destination">BLACK DISNEYLAND</div>
                         <div class = "label-date">DATE</div>
@@ -22,25 +30,25 @@
                     </div>
                     <div class = "ticket-center">
                         <div class = "bdl">BLACK DISNEYLAND</div>
-                        <div class = "barcode"><img src="../images/barcode.jpg" alt="바코드">이거 바코드 랜덤으로 할지 결정하기</div>
+                        <div class = "barcode"><img src="../images/barcode.jpg" alt="바코드"></div>
                     </div>
                     <div class = "ticket-right">
                         <div class = "ticket-mickey">
                             <% if(head == 1){ %>
+                                <h2 class = "ticket-head">Admit <%= head %></h2>
                                 <img class = "ticket-img" src="../images/1h.jpg" alt="one">
-                                <div class = "ticket-head">Admit <%= head %></div>
                                 <div class = "ticket-welcome">you are going to BLACK DISNEY</div>
                             <% }else if(head == 2){ %>
+                                <h2 class = "ticket-head">Admit <%= head %></h2>
                                 <img class = "ticket-img" src="../images/2h.jpg" alt="two">
-                                <div class = "ticket-head">Admit <%= head %></div>
                                 <div class = "ticket-welcome">you are going to BLACK DISNEY</div>
                             <% }else if(head == 3){ %>
-                                <img class = "ticket-img" src="../images/3h.jpg" alt="three">
-                                <div class = "ticket-head">Admit <%= head %></div>
-                                <div class = "ticket-welcome">you are going to BLACK DISNEY</div>
+                                <h2 class = "ticket-head">Admit <%= head %></h2>
+                                    <img class = "ticket-img" src="../images/3h.jpg" alt="three">
+                                    <div class = "ticket-welcome">you are going to BLACK DISNEY</div>
                             <% }else{ %>
+                                <h2 class = "ticket-head">Admit <%= head %></h2>
                                 <img class = "ticket-img" src="../images/4h.jpg" alt="four">
-                                <div class = "ticket-head">Admit <%= head %></div>
                                 <div class = "ticket-welcome">you are going to BLACK DISNEY</div>
                             <% } %> 
                         </div>
@@ -50,20 +58,8 @@
                     <p>예약한 티켓이 없습니다!</p>
                 <% } %> 
                 </div>
-            
             <a href="/reserve">reserve</a>
-        <div class = "pass">
-            <div class = "user">
-                <p><%= nick %>'s Page</p>
-            </div>
-            <div class = "myAttractions">
-                <ul>
-                    <li><%= attraction1 %></li>
-                    <li><%= attraction2 %></li>
-                    <li><%= attraction3 %></li>
-                </ul>
-            </div>
-        </div>
+            <a href="/pass">Do you have FreePass ticket?</a>
     </div>
 </body>
 <script src="/javascripts/index.js"></script>

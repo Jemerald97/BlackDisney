@@ -1,13 +1,23 @@
+canvas{
+  background : transparent;
+  width : 100vw;
+  height : 60vh;
+  padding : 0;
+  margin : auto;
+  position : absolute;
+  top : 0;
+  left : 0;
+  z-index : -1;
+}
+.login-position{
+  display : flex;
+  align-items: flex-end;
+}
+
 .svg-body{
   background-color: black;
 }
-.svg-container{
-  /* position: relative;
-  width : 30%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; */
-}
+
 .svg-container .svg-icon{
   width : 10%;
 }
@@ -18,6 +28,7 @@
   /* stroke-dasharray: 1560;
   stroke-dashoffset: 1560; */
 }
-.svg-container .svg-icon{
 
-}
+/* 환영합니다 닉네임 효과 */
+
+

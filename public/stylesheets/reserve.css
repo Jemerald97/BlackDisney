@@ -1,5 +1,28 @@
+body{
+    background-color : black;
+    color : white;
+}
+h2{
+    display : flex;
+    justify-content: center;
+    margin-top : 5%;
+}
+.reservation-container{
+    margin : 0 auto;
+}
 .ticket{
-    
+    display : flex;
+    justify-content: center;
+    z-index : 2;
+    margin-top : 10%;
+}
+.pass{
+    display : flex; 
+    justify-content: center;
+}
+.dropdown-btn{
+    display : flex;
+    align-items: flex-end;
 }
 .dropdown {
     margin-top: 20vh;
@@ -18,11 +41,11 @@
     outline: none;
     border: 0.06em solid transparent;
     border-radius: 1em;
-    background-color: #cde4f5;
+    background-color: #ffffff;
     transition: 0.3s all ease-in-out;
 }
 .dropdown input:focus + label {
-    background: #def;
+    background: rgb(255, 255, 255);
 }
 .dropdown input {
     width: 1px;
@@ -44,7 +67,7 @@
 }
 .dropdown label:nth-child(2) {
     margin-top: 2em;
-    border-top: 0.06em solid #d9d9d9;
+    border-top: 0.06em solid #ffffff;
 }
 .dropdown input:checked + label {
     display: block;
@@ -62,12 +85,12 @@
     position: absolute;
     right: 0.8em;
     top: 0.9em;
-    border: 0.3em solid #3694d7;
-    border-color: #3694d7 transparent transparent transparent;
+    border: 0.3em solid #000000;
+    border-color: #000000 transparent transparent transparent;
     transition: 0.4s all ease-in-out;
 }
 .dropdown.expanded {
-    border: 0.06em solid #3694d7;
+    border: 0.06em solid #ffffff;
     background: #fff;
     border-radius: 0.25em;
     padding: 0;
@@ -78,10 +101,10 @@
     border-top: 0.06em solid #d9d9d9;
 }
 .dropdown.expanded label:hover {
-    color: #3694d7;
+    color: #000000;
 }
 .dropdown.expanded input:checked + label {
-    color: #3694d7;
+    color: #000000;
 }
 .dropdown.expanded::after {
     transform: rotate(-180deg);

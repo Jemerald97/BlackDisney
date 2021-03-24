@@ -19,9 +19,13 @@ const moment = require('moment');
         client.query('SELECT * FROM members WHERE nick =?;SELECT * FROM tickets WHERE nick = ?', [nick, nick], function(err,datas){
           const memberData = datas[0];
           const ticketData = datas[1];
+          const name = memberData[0].name;
+          console.log(memberData);
+          console.log(name);
           res.render('member', {
             title : 'MyPage', 
             nick : nick, 
+            name : name,
             attraction1 : memberData[0].attraction1, 
             attraction2 : memberData[0].attraction2, 
             attraction3 : memberData[0].attraction3, 
@@ -49,6 +53,16 @@ const moment = require('moment');
       }
     });
   });
+
+  router.get('/pass', function(req,res, next){
+    const nick = req.session.nick;
+
+  });
+
+router.post('/pass', function(req,res,next){
+
+})
+
 
 
 module.exports = router; 

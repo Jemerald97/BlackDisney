@@ -4,6 +4,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <style>
+        body{
+            background-color: black;
+            color : white;
+        }
+        .sign_up{
+            display : flex;
+            justify-content : center;
+            margin-top : 5%;
+        }
+        .signup_title{
+            display : flex;
+            justify-content: center;
+            margin-top : 5%;
+        }
+    </style>
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
         $(function(){
@@ -31,41 +47,44 @@
     </script>
 </head>
 <body>
-    <% include header %>
-    <h3>회원가입</h3>
-    <form action="/sign_up" method="POST">
-        <table>
-            <tr>
-                <td>name</td>
-                <td><input type="text" name="name" placeholder="이름을 입력하세요." required ></td>
-            </tr>
-            <tr>
-                <td>nickname</td>
-                <td>
-                    <input type="text" id = "nick" name="nick" placeholder="닉네임을 입력하세요." >
-                    <input type="button" id ="correct" value="중복확인">
-                    <font name = "correct_comment"></font>
-                </td>
-            </tr>
-            <tr>
-                <td>email</td>
-                <td><input type="email" name="email" placeholder="이메일을 입력하세요." onclick = "emailCheck()" required ></td>
-            </tr>
-            <tr>
-                <td>password</td>
-                <td><input type="password" name="pwd" placeholder="비밀번호를 입력하세요." required ></td>
-            </tr>
-            <tr>
-                <td>confirm password</td>
-                <td><input type="password" name="cfPwd" placeholder="비밀번호를 입력하세요." required ></td>
-            </tr>
-            <tr>
-                <td>birthday</td>
-                <td><input type="date" name="birth"></td>
-            </tr>
-        </table>
-        <!-- 로그인 실패했을 때 화면에도 추가하기 -->
-        <input type="submit" value="가입하기">
-    </form>
+    <h2 class = "signup_title">SignUp</h2>
+    <div class = "sign_up">
+        
+        <form action="/sign_up" method="POST">
+            <table>
+                <tr>
+                    <td>name</td>
+                    <td><input type="text" name="name" placeholder="이름을 입력하세요." required ></td>
+                </tr>
+                <tr>
+                    <td>nickname</td>
+                    <td>
+                        <input type="text" id = "nick" name="nick" placeholder="닉네임을 입력하세요." >
+                        <input type="button" id ="correct" value="중복확인">
+                        <font name = "correct_comment"></font>
+                    </td>
+                </tr>
+                <tr>
+                    <td>email</td>
+                    <td><input type="email" name="email" placeholder="이메일을 입력하세요." onclick = "emailCheck()" required ></td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td><input type="password" name="pwd" placeholder="비밀번호를 입력하세요." required ></td>
+                </tr>
+                <tr>
+                    <td>confirm password</td>
+                    <td><input type="password" name="cfPwd" placeholder="비밀번호를 입력하세요." required ></td>
+                </tr>
+                <tr>
+                    <td>birthday</td>
+                    <td><input type="date" name="birth"></td>
+                </tr>
+            </table>
+            <!-- 로그인 실패했을 때 화면에도 추가하기 -->
+            <input type="submit" value="가입하기">
+        </form>
+    </div>
+
 </body>
 </html>
