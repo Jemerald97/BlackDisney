@@ -27,7 +27,6 @@ router.post('/ticket', function(req,res,next){
         1. tickets 쿼리문에서 세션 닉이랑 같은 닉을 찾고 if 문에서 값이 있다면 update 쿼리를 실행하는 것으로 
         2. tickets 쿼리문에서 날짜 비교하고 같으면 에러 페이지 표시
     */
-
     client.query('SELECT * FROM tickets WHERE nick = ? and date = ?', [nick, date], function(err,data){ //data[0]은 회원 정보 데이터베이스이고, data[1]은 티켓 데이터베이스이다. 
         console.log(data);
         
@@ -38,9 +37,6 @@ router.post('/ticket', function(req,res,next){
                     title : "MyPage",
                     nick : nick,
                     name : name,
-                    attraction1 : data[0].attraction1,
-                    attraction2 : data[0].attraction2,
-                    attraction3 : data[0].attraction3,
                     logined : true, 
                     ticket : true,
                     date : date, 
@@ -53,6 +49,5 @@ router.post('/ticket', function(req,res,next){
         }
     });
 });
-
 
 module.exports = router;

@@ -4,8 +4,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="../stylesheets/reserve.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
     <div class="reservation-container">
@@ -19,11 +20,9 @@
         </form>
     </div>
 
-
-
     <script>
-        // 티켓 선택
-        function SliderValue(val){
+                // 티켓 선택
+                function SliderValue(val){
             let obValueView = document.getElementById('slider-value');
             obValueView.innerHTML = val;
         }
@@ -35,20 +34,7 @@
         }
         
         rangeSlider();
-
-        //패스권 선택
-        $('.dropdown').click(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).toggleClass('expanded');
-            $('#'+$(e.target).attr('for')).prop('checked',true);
-        });
-        $(document).click(function() {
-            $('.dropdown').removeClass('expanded');
-        });
     </script>
-    <script src="/javascripts/index.js"></script>
 </body>
-
 
 </html>

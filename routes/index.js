@@ -10,8 +10,9 @@ router.use(session({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(req.session);
+  console.log('홈페이지 들어왔음.');
   if(req.session.logined == true){
+    console.log('로그인 상태');
     res.render('index', { 
       title : 'Black Disney', 
       welcome : 'Black Disney in Las Vegas',
@@ -19,6 +20,7 @@ router.get('/', function(req, res, next) {
       nick : req.session.nick
     });
   }else{
+    console.log('로그인 실패.');
     res.render('index', {
       title : 'Black Disney', 
       welcome : 'Black Disney in Las Vegas',

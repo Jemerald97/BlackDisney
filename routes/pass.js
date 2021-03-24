@@ -65,7 +65,6 @@ router.post('/', function(req,res,next){
     function queue(){
         setTimeout(function(){
             client.query('DELETE FROM reservation WHERE nick = ? limit 1', [nick], function(){
-                res.send("<script>alert('어트랙션 이용 시간이 만료되었습니다.');</script>");
             });
         }, 1000*60);
     }

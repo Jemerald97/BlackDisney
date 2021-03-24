@@ -4,13 +4,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <link rel="stylesheet" href="../stylesheets/community.css">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c632d6f0931728bdfd09239b10dddc"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c632d6f0931728bdfd09239b10dddc&libraries=services,clusterer,drawing"></script>
 </head>
 <body>
+    <h1>Attractions</h1>
     <% for(let i = 1; i<7; i++){ %>
-        <a href="/view/<%= i %>">attraction<%= i %></a>
-        <div id = "map<%= i %>" style = "width:500px; height:400px;"></div>
+        <% let attraction = ['Alice in Wonderland', 'Buzz Lightyear Astro Blasters', 'Circus Train', 'Dumbo the Flying Elephant', 'Incredicoster', 'Riverboat'];  %> 
+        <a href="/view/<%= i %>"><%= attraction[i] %></a>
+        <img src="../public/images/" alt="어트랙션">
+        <div id = "map<%= i %>" style = "width:15%; height:25%; border-radius: 15%;"></div>
     <% } %> 
     <script>
         const arr = [37.29304086500388, 127.19975061807155, 37.2994311712151, 127.20032962432335, 37.292981692433294, 127.20132783822574, 37.292570288481706, 127.19929758794748, 37.293994284694385, 127.20047938343201, 37.29784799201356, 127.20038863292037];

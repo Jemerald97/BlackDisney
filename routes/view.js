@@ -7,9 +7,10 @@ const moment = require('moment');
 router.get('/:id', function(req, res, next) {
   const id = req.params.id;
   const nick = req.session.nick;
+  const attraction = ['Alice in Wonderland', 'Buzz Lightyear Astro Blasters', 'Circus Train', 'Dumbo the Flying Elephant', 'Incredicoster', 'Riverboat'];
   client.query('SELECT * FROM comments WHERE attraction = ?', [id], function(err,data){
     res.render('view', {
-      title : 'Attraction'+id,
+      title : attraction[id],
       id : id,
       data : data,
       nick : nick,
@@ -32,11 +33,11 @@ router.post('/:id/write', function(req,res,next){
 });
 
 router.get('/:id/delete/:num', function(req,res,next){
-    //const id = req.params.id;
+    const id = req.params.id;
     const num = req.params.num;
     console.log(num);
     client.query('DELETE FROM comments WHERE num = ?', [num], function(err, data){
-        res.redirect('/view');
+        res.redirect('/view/'+id);
     });
 });
 
@@ -50,6 +51,7 @@ router.get('/:id/update/:num', function(req,res,next){
         title : 'view',
         data : data,
         nick : nick,
+        id : id,
         num : num,
         logined : true, 
         update : true, 
@@ -73,7 +75,7 @@ router.post('/:id/submit/:num', function(req,res,next){
 //   const like = req.body.like;
 //   client.query('INSERT INTO attractions(attraction) VALUES (?) WHERE nick = ?', [id], function(){
 
-//   })
-// })
+//   });
+// });
 
 module.exports = router;
