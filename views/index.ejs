@@ -5,33 +5,45 @@
     <link rel='stylesheet' href='/stylesheets/svg1.css' />
     <link rel="stylesheet" href="/stylesheets/index.css">
     <style>
-      p{
+      p, h1{
         color : white;
       }
       a{
         color : white;
+        text-decoration: none;
+      }
+      .center{
+        display :flex;
+        justify-content: center;
       }
     </style>
   </head>
   <body>
-    <div>
+    <div class = "center">
       <% if(logined == false){ %> 
-        <h1 class = "welcome">Welcome to <%= welcome %></h1>
-        <% include svg1 %>
-        <div class = "login-position">
+          <div class = "login-position">
+          <h1 class = "welcome">Welcome to</h1> <h1 class = "welcome"><%= welcome %></h1>
+          <% include svg1 %>
           <% include login %> 
         </div>
         
       <% }else{ %> 
-        <div class="sign">
-          <span class="fast-flicker">Welcome</span><span class="flicker"><%= nick %></span>
+        
+        <div class = "login-position">
+          <% if(birth == true){ %>
+            <h1 class = "welcomeNick">Happy BirthDay <%= nick %>!</h1>
+          <% }else{ %>
+            <h1 class = "welcomeNick">Welcome <%= nick %>!</h1>
+          <% } %> 
+           <% include svg1 %>
         </div>
         <canvas class = "index-position"></canvas>
-        <% include svg1 %>
+
         
-        <a href="/member">마이페이지</a>
-        <a href="/logout">로그아웃</a>
-        <a href="/community">커뮤니티</a>
+        <a class = "member-btn" href="/member">MyTicket</a>
+        <a class = "community-btn" href="/community">Community</a>
+        <a class = "logout-btn" href="/logout">Logout</a>
+        
       <% } %> 
       
     </div>

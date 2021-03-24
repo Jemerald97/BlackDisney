@@ -5,31 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Pass</title>
     <link rel="stylesheet" href="../stylesheets/pass.css">
+    <style>
+        
+        body{
+            background-color : black;
+            color : white;
+        }
+        a{
+            color : white;
+            text-decoration: none;
+            font-family: 'Pangolin', cursive;
+        }
+        .myAttraction ul li{
+            font-family: 'Pangolin', cursive;
+        }
+        .pass{
+            margin-top : 6%;
+        }
+    </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
+            <!-- 어트랙션 패스권 -->
+            <form class = "pass" action="/pass" method="POST">
+                <span class = "dropdown">
+                    <input type = "radio" name = "attraction" id = "a" value="Alice in Wonderland" checked = "checked"><label for="a">Alice in Wonderland</label>
+                    <input type = "radio" name = "attraction" id = "b" value="Buzz Lightyear Astro Blasters"><label for="b">Buzz Lightyear Astro Blasters</label>
+                    <input type = "radio" name = "attraction" id = "c" value="Circus Train"><label for="c">Circus Train</label>
+                    <input type = "radio" name = "attraction" id = "d" value="Dumbo the Flying Elephant"><label for="d">Dumbo the Flying Elephant</label>
+                    <input type = "radio" name = "attraction" id = "i" value="Incredicoster"><label for="i">Incredicoster</label>
+                    <input type = "radio" name = "attraction" id = "r" value="Riverboat"><label for="r">Riverboat</label>
+                </span>
+                <span class = "dropdown-btn"><input type="submit" value = "Free Pass"></span>
+            </form>
     <div class = "pass">
         <p><%= nick %>'s Page</p>
         <div class = "myAttractions">
             <ul>
-                <li><%= attraction1 %></li>
-                <li><%= attraction2 %></li>
-                <li><%= attraction3 %></li>
+                <li><%= attraction1 %></li><span>validTime</span><span><%= validTime1 %></span>
+                <li><%= attraction2 %></li><span>validTime</span><span><%= validTime2 %></span>
+                <li><%= attraction3 %></li><span>validTime</span><lspan<%= validTime3 %></span>
             </ul>
         </div>
     </div>
-        <!-- 어트랙션 패스권 -->
-        <form class = "pass" action="/pass" method="POST">
-            <span class = "dropdown">
-                <input type = "radio" name = "attraction" id = "a" value="Alice in Wonderland" checked = "checked"><label for="a">Alice in Wonderland</label>
-                <input type = "radio" name = "attraction" id = "b" value="Buzz Lightyear Astro Blasters"><label for="b">Buzz Lightyear Astro Blasters</label>
-                <input type = "radio" name = "attraction" id = "c" value="Circus Train"><label for="c">Circus Train</label>
-                <input type = "radio" name = "attraction" id = "d" value="Dumbo the Flying Elephant"><label for="d">Dumbo the Flying Elephant</label>
-                <input type = "radio" name = "attraction" id = "i" value="Incredicoster"><label for="i">Incredicoster</label>
-                <input type = "radio" name = "attraction" id = "r" value="Riverboat"><label for="r">Riverboat</label>
-            </span>
-            <span class = "dropdown-btn"><input type="submit" value = "Free Pass"></span>
-        </form>
+    <a href="/member">MyTicket</a>
+
     <!-- 
         어트랙션 예약 queue 다른 방법 : 
         1. 1시간이 지날 경우, 어트랙션 예약이 자동으로 취소된다. 

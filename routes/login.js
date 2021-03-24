@@ -6,6 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const moment = require('moment');
 
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
@@ -47,15 +48,34 @@ router.post('/', function(req,res,next){
             req.session.name = members[0].name;
             req.session.nick = members[0].nick;
             req.session.pwd = members[0].pwd;
+            req.session.birth = members[0].birth;
+            
+            const day = moment().format('YYYY-MM-DD');
+            console.log('today', day);
+            const birth = moment(req.session.birth).format('YYYY-MM-DD');
+            console.log('birth', birth);
             req.session.save(function(){
-                res.render('index', {
-                    title : 'Black Disney', 
-                    welcome : 'Black Disney in Las Vegas',
-                    name : members[0].name,
-                    nick : members[0].nick, 
-                    birth : members[0].birth, 
-                    logined : true
-                });
+                if(day == birth){
+                    res.render('index', {
+                        title : 'Black Disney', 
+                        welcome : 'Black Disney in Las Vegas',
+                        name : members[0].name,
+                        nick : members[0].nick, 
+                        birth : members[0].birth, 
+                        logined : true, 
+                        birth : true
+                    });
+                }else{
+                    res.render('index', {
+                        title : 'Black Disney', 
+                        welcome : 'Black Disney in Las Vegas',
+                        name : members[0].name,
+                        nick : members[0].nick, 
+                        birth : members[0].birth, 
+                        logined : true, 
+                        birth : false
+                    });
+                }
             });
         }else{
             console.log('로그인 실패');
@@ -65,17 +85,6 @@ router.post('/', function(req,res,next){
             });
         }
     });
-
-    // client.query(searchQ, [body.nick], function(err,members){
-    //      if((undefined == members[0])&&(undefined == members[0])){
-    //         console.log('왜');
-    //         console.log('3', body.nick);
-    //         console.log('4', members[0]);
-    //         res.redirect('/login');
-    //     }else{
-    //         res.redirect('/');
-    //     }
-    // })
 });
 
 module.exports = router;

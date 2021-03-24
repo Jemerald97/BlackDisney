@@ -10,7 +10,7 @@ router.get('/:id', function(req, res, next) {
   const attraction = ['Alice in Wonderland', 'Buzz Lightyear Astro Blasters', 'Circus Train', 'Dumbo the Flying Elephant', 'Incredicoster', 'Riverboat'];
   client.query('SELECT * FROM comments WHERE attraction = ?', [id], function(err,data){
     res.render('view', {
-      title : attraction[id],
+      title : attraction[id-1],
       id : id,
       data : data,
       nick : nick,

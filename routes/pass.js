@@ -16,7 +16,10 @@ router.get('/', function(req,res,next){
                 nick : nick, 
                 attraction1 : '예약한 어트랙션이 없습니다.', 
                 attraction2 : '예약한 어트랙션이 없습니다.', 
-                attraction3 : '예약한 어트랙션이 없습니다.'
+                attraction3 : '예약한 어트랙션이 없습니다.', 
+                validTime1 : '-', 
+                validTime2 : '-',
+                validTime3 : '-'
             });
         //사용자가 예약한 데이터가 1개, 2개, 3개일 때 페이지 렌더링
         }else if(data.length==1){
@@ -24,21 +27,30 @@ router.get('/', function(req,res,next){
                 nick : nick, 
                 attraction1 : data[0].attraction, 
                 attraction2 : '예약한 어트랙션이 없습니다.', 
-                attraction3 : '예약한 어트랙션이 없습니다.'
+                attraction3 : '예약한 어트랙션이 없습니다.', 
+                validTime1 : data[0].validTime, 
+                validTime2 : '-',
+                validTime3 : '-'
             });
         }else if(data.length==2){
             res.render('pass', {
                 nick : nick, 
                 attraction1 : data[0].attraction, 
                 attraction2 : data[1].attraction, 
-                attraction3 : '예약한 어트랙션이 없습니다.'
+                attraction3 : '예약한 어트랙션이 없습니다.', 
+                validTime1 : data[0].validTime, 
+                validTime2 : data[1].validTime,
+                validTime3 : '-'
             });
         }else{
             res.render('pass', {
                 nick : nick, 
                 attraction1 : data[0].attraction, 
                 attraction2 : data[1].attraction, 
-                attraction3 : data[2].attraction
+                attraction3 : data[2].attraction, 
+                validTime1 : data[0].validTime, 
+                validTime2 : data[1].validTime,
+                validTime3 : data[2].validTime
             });
         }
     });
@@ -65,8 +77,9 @@ router.post('/', function(req,res,next){
     function queue(){
         setTimeout(function(){
             client.query('DELETE FROM reservation WHERE nick = ? limit 1', [nick], function(){
+                console.log('이용 시간 만료');
             });
-        }, 1000*60);
+        }, 10000);
     }
     /*
      1. reservation 테이블에서 세션 들어온 닉이 있는 데이터 찾고 
@@ -102,14 +115,14 @@ router.post('/', function(req,res,next){
             if(hours > data[0].hours){
                 console.log('시 비교');
                 client.query('INSERT INTO reservation(nick, attraction, hours, minutes, validTime) VALUES (?, ?, ?, ?, ?)', [nick, attraction, hours, minutes, time], function(){
-                    //queue();
+                    queue();
                     res.redirect('/pass');
                 });
             }//분 비교
             else if((hours == (data[0].hours)) && (minutes > data[0].minutes)){
                 console.log('분 비교');
                 client.query('INSERT INTO reservation(nick, attraction, hours, minutes, validTime) VALUES (?, ?, ?, ?, ?)', [nick, attraction, hours, minutes, time], function(){
-                    //queue();
+                    queue();
                     res.redirect('/pass');
                 });
             }
@@ -122,14 +135,14 @@ router.post('/', function(req,res,next){
             if(hours > data[1].hours){
                 console.log('데이터 2인 곳 들어옴');
                 client.query('INSERT INTO reservation(nick, attraction, hours, minutes, validTime) VALUES (?, ?, ?, ?, ?)', [nick, attraction, hours, minutes, time], function(){
-                    //queue();
+                    queue();
                     res.redirect('/pass');
                 });
             }//분 비교
             else if((hours == (data[1].hours)) && (minutes > data[1].minutes)){
                 console.log('데이터 2인 곳 시간 비교');
                 client.query('INSERT INTO reservation(nick, attraction, hours, minutes, validTime) VALUES (?, ?, ?, ?, ?)', [nick, attraction, hours, minutes, time], function(){
-                    //queue();
+                    queue();
                     res.redirect('/pass');
                 });
             }

@@ -4,29 +4,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <style>
+        @keyframes shake {
+	0%{
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+	10%{
+		transform: translate(-1px, -1px) rotate(1deg);
+	}
+	20%{
+		transform: translate(-2px, 1px) rotate(-1deg);
+	}
+	30%{
+		transform: translate(1px, 2px) rotate(0deg);
+	}
+	40%{
+		transform: translate(-1px, 1px) rotate(1deg);
+	}
+	50%{
+		transform: translate(1px, -1px) rotate(-2deg);
+	}
+	60%{
+		transform: translate(2px, 1px) rotate(1deg);
+	}
+	70%{
+		transform: translate(-1px, 2px) rotate(2deg);
+	}
+	80%{
+		transform: translate(2px, -1px) rotate(1deg);
+	}
+	90%{
+		transform: translate(-1px, 2px) rotate(0deg);
+	}
+	100%{
+		transform: translate(2px, 1px) rotate(-1deg);
+	}
+}
+    </style>
     <link rel="stylesheet" href="../stylesheets/community.css">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c632d6f0931728bdfd09239b10dddc"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c632d6f0931728bdfd09239b10dddc&libraries=services,clusterer,drawing"></script>
+
 </head>
 <body>
-    <h1>Attractions</h1>
-    <% for(let i = 1; i<7; i++){ %>
-        <% let attraction = ['Alice in Wonderland', 'Buzz Lightyear Astro Blasters', 'Circus Train', 'Dumbo the Flying Elephant', 'Incredicoster', 'Riverboat'];  %> 
-        <a href="/view/<%= i %>"><%= attraction[i] %></a>
-        <img class = "attraction-img" src="../images/play<%= i %>.jpg" alt="어트랙션">
-        <div id = "map<%= i %>" style = "width:15%; height:25%; border-radius: 15%;"></div>
-    <% } %>
+    <div class= "center">
+        <h1>Attractions</h1>
+        <% for(let i = 1; i<7; i++){ %>
+            <% let attraction = ['Alice in Wonderland', 'Buzz Lightyear Astro Blasters', 'Circus Train', 'Dumbo the Flying Elephant', 'Incredicoster', 'Riverboat'];  %> 
+            <%= attraction[i-1] %><a href="/view/<%= i %>"><img class = "attraction-img" src="../images/play<%= i %>.jpg" alt="어트랙션"></a>
+            
+            <div id = "map<%= i %>" style = "z-index = 2;width:15%; height:25%; border-radius: 15%; animation : shake 2s infinite" ></div>
+        <% } %>
+    </div>
+
     <script>
         const arr = [37.29304086500388, 127.19975061807155, 37.2994311712151, 127.20032962432335, 37.292981692433294, 127.20132783822574, 37.292570288481706, 127.19929758794748, 37.293994284694385, 127.20047938343201, 37.29784799201356, 127.20038863292037];
         function shibal(i){
             let container = document.getElementById('map'+(i+1)); //지도를 담을 영역의 DOM 레퍼런스
             let options = { //지도를 생성할 때 필요한 기본 옵션
                 center: new kakao.maps.LatLng(arr[2*i], arr[2*i+1]), //지도의 중심좌표.
-                level: 3 //지도의 레벨(확대, 축소 정도)
+                level: 2 //지도의 레벨(확대, 축소 정도)
             };
             let map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
             let markerPosition = new kakao.maps.LatLng(arr[2*i], arr[2*i+1]);
-
             let marker = new kakao.maps.Marker({
                 position: markerPosition
             });

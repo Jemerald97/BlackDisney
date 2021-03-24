@@ -27,12 +27,13 @@ router.post('/ticket', function(req,res,next){
         1. tickets 쿼리문에서 세션 닉이랑 같은 닉을 찾고 if 문에서 값이 있다면 update 쿼리를 실행하는 것으로 
         2. tickets 쿼리문에서 날짜 비교하고 같으면 에러 페이지 표시
     */
-    client.query('SELECT * FROM tickets WHERE nick = ? and date = ?', [nick, date], function(err,data){ //data[0]은 회원 정보 데이터베이스이고, data[1]은 티켓 데이터베이스이다. 
+    client.query('SELECT * FROM tickets WHERE nick = ? and date = ?', [nick, date], function(err,data){ //data[0]은 티켓 데이터베이스이다. 
         console.log(data);
         
         if(data.length == 0){
-            client.query('SELECT * FROM members; INSERT INTO tickets(nick, date, head) VALUES (?, ?, ?)', [nick, date, head], function(err,data){
-                const name = data[0].name;
+            client.query('SELECT * FROM members WHERE nick = ?; INSERT INTO tickets(nick, date, head) VALUES (?, ?, ?)', [nick, nick, date, head], function(err,datas){
+                const name = datas[0].name;
+                console.log(name);
                 res.render('member', {
                     title : "MyPage",
                     nick : nick,
@@ -45,7 +46,7 @@ router.post('/ticket', function(req,res,next){
                   });
             });
         }else{
-            console.log('이미 같은 날짜 예약이 있습니다.');
+          res.send("<script>alert('이미 같은 날짜 예약이 있습니다.');history.back();</script>");
         }
     });
 });

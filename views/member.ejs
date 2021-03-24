@@ -5,15 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Page</title>
     <link rel="stylesheet" href="../stylesheets/member.css">
-    <style>
-        .ticket-img{
-            width : 80%;
-            height : 60%;
-        }
-    </style>
 </head>
 <body>
-    <h2><%= nick %>'s Page</h2>
+    <h1><%= nick %>'s Page</h1>
     <div class = "total">
                 <% if(ticket == true){ %>
                 <div class = "ticket">
@@ -21,16 +15,16 @@
                        <div class="box-with-text">
                                 Happy BLACK DISNEY
                         </div>
-                        <div class = "label-name">NAME</div>
+                        <div class = "label-name"  style = "color : gray">NAME</div>
                         <div class = "ticket-name"><%= name %></div>
-                        <div class = "label-desti">DESTINATION</div>
+                        <div class = "label-desti" style = "color : gray">DESTINATION</div>
                         <div class = "destination">BLACK DISNEYLAND</div>
-                        <div class = "label-date">DATE</div>
+                        <div class = "label-date"  style = "color : gray">DATE</div>
                         <div class = "ticket-date"><%= moment(date).format('YY.MM.DD') %></div>
                     </div>
                     <div class = "ticket-center">
                         <div class = "bdl">BLACK DISNEYLAND</div>
-                        <div class = "barcode"><img src="../images/barcode.jpg" alt="바코드"></div>
+                        <div class = "barcode"><img src="../images/barcode.png" style = "margin-top : 20px;transform : rotate(90deg)" alt="바코드"></div>
                     </div>
                     <div class = "ticket-right">
                         <div class = "ticket-mickey">

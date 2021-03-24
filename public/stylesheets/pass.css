@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
 .pass{
     display : flex; 
     justify-content: center;
 }
 .dropdown-btn{
+    font-family: 'Pangolin', cursive;
     display : flex;
     align-items: flex-end;
 }
 .dropdown {
+    font-family: 'Pangolin', cursive;
     margin-top: 20vh;
     min-width: 12em;
     position: relative;
