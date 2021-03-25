@@ -31,8 +31,9 @@ router.post('/ticket', function(req,res,next){
         console.log(data);
         
         if(data.length == 0){
-            client.query('SELECT * FROM members WHERE nick = ?; INSERT INTO tickets(nick, date, head) VALUES (?, ?, ?)', [nick, nick, date, head], function(err,datas){
-                const name = datas[0].name;
+            client.query('SELECT * FROM members WHERE nick = ?; INSERT INTO tickets(nick, date, head) VALUES (?, ?, ?)', [nick, nick, date, head], function(err,data){
+              console.log(data);  
+              const name = data[0].name;
                 console.log(name);
                 res.render('member', {
                     title : "MyPage",

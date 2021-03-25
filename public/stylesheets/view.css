@@ -1,5 +1,6 @@
 a{
   color: inherit;
+  text-decoration: none;
 }
 .chat ul li{
   list-style-image: url("../public/images/1.png");
@@ -15,12 +16,14 @@ body{
 .chat {
   width: 120px;
   height: 80px;
-  margin-left : 20px;
+  /* margin-left : 20px; */
   background: rgb(0, 0, 0);
   position: relative;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
+  display : flex;
+  justify-content : center;
 }
 .chat:before {
   content: "";

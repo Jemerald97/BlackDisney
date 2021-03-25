@@ -23,26 +23,26 @@
                         <div class = "ticket-date"><%= moment(date).format('YY.MM.DD') %></div>
                     </div>
                     <div class = "ticket-center">
-                        <div class = "bdl">BLACK DISNEYLAND</div>
-                        <div class = "barcode"><img src="../images/barcode.png" style = "margin-top : 20px;transform : rotate(90deg)" alt="바코드"></div>
+                        <span class = "bdl">BLACK DISNEYLAND</span>
+                        <img class = "barcode"src="../images/barcode.jpg"  alt="바코드">
                     </div>
                     <div class = "ticket-right">
                         <div class = "ticket-mickey">
                             <% if(head == 1){ %>
-                                <h2 class = "ticket-head">Admit <%= head %></h2>
                                 <img class = "ticket-img" src="../images/1h.jpg" alt="one">
+                                <h2 class = "ticket-head">Admit <%= head %></h2>
                                 <div class = "ticket-welcome">you are going to BLACK DISNEY</div>
                             <% }else if(head == 2){ %>
-                                <h2 class = "ticket-head">Admit <%= head %></h2>
                                 <img class = "ticket-img" src="../images/2h.jpg" alt="two">
+                                <h2 class = "ticket-head">Admit <%= head %></h2>
                                 <div class = "ticket-welcome">you are going to BLACK DISNEY</div>
                             <% }else if(head == 3){ %>
+                                <img class = "ticket-img" src="../images/3h.jpg" alt="three">
                                 <h2 class = "ticket-head">Admit <%= head %></h2>
-                                    <img class = "ticket-img" src="../images/3h.jpg" alt="three">
                                     <div class = "ticket-welcome">you are going to BLACK DISNEY</div>
                             <% }else{ %>
-                                <h2 class = "ticket-head">Admit <%= head %></h2>
                                 <img class = "ticket-img" src="../images/4h.jpg" alt="four">
+                                <h2 class = "ticket-head">Admit <%= head %></h2>
                                 <div class = "ticket-welcome">you are going to BLACK DISNEY</div>
                             <% } %> 
                         </div>
