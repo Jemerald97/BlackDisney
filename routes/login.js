@@ -40,51 +40,55 @@ router.post('/', function(req,res,next){
     const body = req.body;
     const nick = body.nick;
     const pwd = body.pwd;
-
-    client.query('SELECT * FROM members WHERE nick = ?', [nick], function(err, members){
-        if(nick == members[0].nick && pwd == members[0].pwd){
-            console.log('로그인 성공');
-            req.session.logined = true;
-            req.session.name = members[0].name;
-            req.session.nick = members[0].nick;
-            req.session.pwd = members[0].pwd;
-            req.session.birth = members[0].birth;
-            
-            const day = moment().format('YYYY-MM-DD');
-            console.log('today', day);
-            const birth = moment(req.session.birth).format('YYYY-MM-DD');
-            console.log('birth', birth);
-            req.session.save(function(){
-                if(day == birth){
-                    res.render('index', {
-                        title : 'Black Disney', 
-                        welcome : 'Black Disney in Las Vegas',
-                        name : members[0].name,
-                        nick : members[0].nick, 
-                        birth : members[0].birth, 
-                        logined : true, 
-                        birth : true
-                    });
-                }else{
-                    res.render('index', {
-                        title : 'Black Disney', 
-                        welcome : 'Black Disney in Las Vegas',
-                        name : members[0].name,
-                        nick : members[0].nick, 
-                        birth : members[0].birth, 
-                        logined : true, 
-                        birth : false
-                    });
-                }
-            });
-        }else{
-            console.log('로그인 실패');
-            res.render('login', {
-                title : 'Black Disney', 
-                welcome : 'Black Disney in Las Vegas'
-            });
-        }
-    });
+    if(nick == null || pwd == null){
+        res.send("<script>alert('please input your data');</script>")
+    }else{
+        client.query('SELECT * FROM members WHERE nick = ?', [nick], function(err, members){
+            if(nick == members[0].nick && pwd == members[0].pwd){
+                console.log('로그인 성공');
+                req.session.logined = true;
+                req.session.name = members[0].name;
+                req.session.nick = members[0].nick;
+                req.session.pwd = members[0].pwd;
+                req.session.birth = members[0].birth;
+                
+                const day = moment().format('YYYY-MM-DD');
+                console.log('today', day);
+                const birth = moment(req.session.birth).format('YYYY-MM-DD');
+                console.log('birth', birth);
+                req.session.save(function(){
+                    if(day == birth){
+                        res.render('index', {
+                            title : 'Black Disney', 
+                            welcome : 'Black Disney in Las Vegas',
+                            name : members[0].name,
+                            nick : members[0].nick, 
+                            birth : members[0].birth, 
+                            logined : true, 
+                            birth : true
+                        });
+                    }else{
+                        res.render('index', {
+                            title : 'Black Disney', 
+                            welcome : 'Black Disney in Las Vegas',
+                            name : members[0].name,
+                            nick : members[0].nick, 
+                            birth : members[0].birth, 
+                            logined : true, 
+                            birth : false
+                        });
+                    }
+                });
+            }else{
+                console.log('로그인 실패');
+                res.render('login', {
+                    title : 'Black Disney', 
+                    welcome : 'Black Disney in Las Vegas'
+                });
+            }
+        });
+    }
+ 
 });
 
 module.exports = router;

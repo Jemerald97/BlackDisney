@@ -29,7 +29,7 @@ router.post('/:id/write', function(req,res,next){
 
   client.query('select * from comments; INSERT INTO comments (attraction, nick, comment) VALUES (?, ?, ?)', [id, nick, comment], function(){
     res.redirect('/view/'+id);
-  })
+  });
 });
 
 router.get('/:id/delete/:num', function(req,res,next){
@@ -69,6 +69,5 @@ router.post('/:id/submit/:num', function(req,res,next){
       res.redirect('/view/'+id);
     });
 });
-
 
 module.exports = router;
