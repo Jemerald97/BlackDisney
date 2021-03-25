@@ -70,12 +70,5 @@ router.post('/:id/submit/:num', function(req,res,next){
     });
 });
 
-// router.post('/:id/like', function(req,res,next){
-//   const id = req.params.id;
-//   const like = req.body.like;
-//   client.query('INSERT INTO attractions(attraction) VALUES (?) WHERE nick = ?', [id], function(){
-
-//   });
-// });
 
 module.exports = router;

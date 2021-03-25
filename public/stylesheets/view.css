@@ -14,8 +14,8 @@ body{
   color : white;
 }
 .chat {
-  width: 120px;
-  height: 80px;
+  /* width: 120px;
+  height: 80px; */
   /* margin-left : 20px; */
   background: rgb(0, 0, 0);
   position: relative;
@@ -37,8 +37,14 @@ body{
   border-bottom: 13px solid transparent;
 }
 .myComment{
-  display: none;
+  display: block;
 }
 ul li{
+  display: block;
+  /* width : 60px; */
   list-style: none;
+}
+.view_img{
+  width : 900px;
+  height : 500px;
 }

@@ -10,8 +10,8 @@ a{
     width : 800px;
     height : 500px;
 }
-/* .center{
-    display : flex;
+.center{
+    /* display : flex;
     justify-items: center;
-    overflow-y: scroll;
-} */
+    overflow-y: scroll; */
+}
