@@ -41,7 +41,7 @@ router.post('/', function(req,res,next){
     const nick = body.nick;
     const pwd = body.pwd;
     if(nick == null || pwd == null){
-        res.send("<script>alert('please input your data');</script>")
+        res.send("<script>alert('please input your data');</script>");
     }else{
         client.query('SELECT * FROM members WHERE nick = ?', [nick], function(err, members){
             if(nick == members[0].nick && pwd == members[0].pwd){
