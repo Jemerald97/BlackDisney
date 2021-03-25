@@ -11,6 +11,7 @@ const moment = require('moment');
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 app.use(cookieParser()); //세션도 쿠키의 종류 
+
 //세션 사용 설정 
 router.use(session({
     secret : 'mintchoco', //쿠키를 임의로 변조하는 것을 방지하기 위한 값
@@ -88,7 +89,6 @@ router.post('/', function(req,res,next){
             }
         });
     }
- 
 });
 
 module.exports = router;
