@@ -13,6 +13,7 @@ IMP.request_pay(
     buyer_tel: "010-1234-5678", //누락되면 이니시스 결제창에서 오류
     buyer_addr: "서울특별시 강남구 삼성동",
     buyer_postcode: "123-456",
+    m_redirect_url: "",
   },
   function (rsp) {
     if (rsp.success) {
