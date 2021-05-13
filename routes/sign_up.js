@@ -1,66 +1,78 @@
 //모듈 불러오기
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bodyParser = require('body-parser');
-const client = require('./mysql');
-const ejs = require('ejs');
-const { checkout } = require('../app');
+const bodyParser = require("body-parser");
+const client = require("./mysql");
+const ejs = require("ejs");
+const { checkout } = require("../app");
 const app = express();
-//const expValidator = require('express-validator');
 
-app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // GET!
-
-router.get('/', function(req,res,next){
-    res.render('signup', {title : 'signup'});
+router.get("/", function (req, res, next) {
+  res.render("signup", { title: "signup" });
 });
 
-router.post('/', function(req,res,next){
-    const body = req.body;
-    const name = body.name;
-    const nick = body.nick;
-    const email = body.email;
-    const pwd = body.pwd;
-    const cfPwd = body.cfPwd;
-    const birth = body.birth;
+router.post("/", function (req, res, next) {
+  const body = req.body;
+  const name = body.name;
+  const nick = body.nick;
+  const email = body.email;
+  const pwd = body.pwd;
+  const cfPwd = body.cfPwd;
+  const birth = body.birth;
 
-    client.query('select * from members where nick = ?', [nick], function(err,data){
-        if(data.length == 0){
-            console.log('success');
-            if(pwd == cfPwd){
-                client.query('INSERT INTO members (name, nick, email, pwd, birth) values (?, ?, ?, ?, ?)', [name, nick, email, pwd, birth], function(){
-                    res.redirect('/');
-                });
-            }else{
-                res.send('<script>alert("비밀번호를 다시 확인하세요.");history.back();</script>');
-            }//전송할 것을 두 번 보내면 안된다!!
-        }else{
-            console.log('fail');
-            res.send('<script>alert("회원가입 실패");</script>');
-        }
-    });
+  client.query(
+    "select * from members where nick = ?",
+    [nick],
+    function (err, data) {
+      if (data.length == 0) {
+        console.log("success");
+        if (pwd == cfPwd) {
+          client.query(
+            "INSERT INTO members (name, nick, email, pwd, birth) values (?, ?, ?, ?, ?)",
+            [name, nick, email, pwd, birth],
+            function () {
+              res.redirect("/");
+            }
+          );
+        } else {
+          res.send(
+            '<script>alert("비밀번호를 다시 확인하세요.");history.back();</script>'
+          );
+        } //전송할 것을 두 번 보내면 안된다!!
+      } else {
+        console.log("fail");
+        res.send('<script>alert("회원가입 실패");</script>');
+      }
+    }
+  );
 });
 
-router.post('/correct', function(req,res,next){
-    console.log('ajax 호출');
-    console.log(req.body.members);
-    const nick = req.body.members;
-    console.log(nick);
-    client.query('SELECT nick FROM members WHERE nick = ?', [nick], function(err, data){
-        if(err) console.log(err);
-        if(data.length == 0){
-            res.send({
-                correct : true
-            });
-            console.log('사용가능');
-        }else{
-            console.log(nick);
-            res.send({
-                correct : false
-            });
-        }
-    });
+router.post("/correct", function (req, res, next) {
+  console.log("ajax 호출");
+  console.log(req.body.members);
+  const nick = req.body.members;
+  console.log(nick);
+  client.query(
+    "SELECT nick FROM members WHERE nick = ?",
+    [nick],
+    function (err, data) {
+      if (err) console.log(err);
+      if (data.length == 0) {
+        res.send({
+          correct: true,
+        });
+        console.log("사용가능");
+      } else {
+        console.log(nick);
+        res.send({
+          correct: false,
+        });
+      }
+    }
+  );
 });
 
 // client.query('SELECT * FROM members', function(err, members){
@@ -74,7 +86,7 @@ router.post('/correct', function(req,res,next){
 //result[0].id == undefined
 // router.post('/', function(req,res,next){
 //     const body = req.body;
-//     const name = body.name; //입력 값과 데이터베이스 값과 일치하는 것을 찾는다. 
+//     const name = body.name; //입력 값과 데이터베이스 값과 일치하는 것을 찾는다.
 //     client.query(selectQ, [name], function(err, result){
 //         console.log('result', result);
 //         if(result !== undefined){
@@ -91,9 +103,8 @@ router.post('/correct', function(req,res,next){
 //     })
 // });
 
-
-// POST, GET 처리 
-// POST : 데이터베이스의 값을 찾아서 입력값과 비교하고 
+// POST, GET 처리
+// POST : 데이터베이스의 값을 찾아서 입력값과 비교하고
 
 // form data 처리 함수
 
@@ -122,7 +133,7 @@ router.post('/correct', function(req,res,next){
 //     return true;
 // }
 
-// 3. 회원가입 조건 
+// 3. 회원가입 조건
 // body.name.length > 2
 // body.nick.length > 1
 // body.pwd.length > 5

@@ -1,11 +1,21 @@
-const { Iamporter, IamporterError } = require("iamporter");
-
-// For Testing (테스트용 API KEY와 SECRET 기본 설정)
-const iamporter = new Iamporter();
-
-// For Production
-const iamporter = new Iamporter({
-  apiKey: "2616929715457218",
-  secret:
+const app = express();
+const iamport = require("iamport");
+const Iamport = new iamport({
+  impKey: "2616929715457218",
+  impSecret:
     "kd9QvtlJbumaHjVORplCGwrVeBidxawSnFJT94CkzYvgiq5aQqMwWesbPKpnVVfiAYbK3O4CNzT50ZgQ",
+});
+
+app.get("/payments/status/all", (req, res) => {
+  iamport.payment
+    .getByStatus({
+      payment_status: "paid",
+    })
+    .then(function (result) {
+      res.render("payments_list", { list: result.list });
+    })
+    .catch(function (error) {
+      console.log(error);
+      red.send(error);
+    });
 });

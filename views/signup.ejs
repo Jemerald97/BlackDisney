@@ -4,32 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
-        body{
-            background-color: black;
-            color : white;
-            font-family: 'Pangolin', cursive;
-        }
-        .sign_up{
-            display : flex;
-            justify-content : center;
-            margin-top : 5%;
-        }
-        .signup_title{
-            display : flex;
-            justify-content: center;
-            margin-top : 5%;
-        }
-        input{
-            background: transparent;
-            width : 100%;
-            color : white;
-        }
-        .btn{
-            background-color :white  !important;
-        }
-    </style>
+    <link rel="stylesheet" href="../stylesheets/signup.css">
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
         $(function(){
@@ -64,27 +39,27 @@
             <table>
                 <tr>
                     <td>name</td>
-                    <td><input type="text" name="name" placeholder="please input your name" required ></td>
+                    <td><input class = "signUp_name" type="text" name="name" placeholder="please input your name" required ></td>
                 </tr>
                 <tr>
                     <td>nickname</td>
                     <td>
                         <input type="text" id = "nick" name="nick" placeholder="please input your nickname" >
-                        <input class = "btn" type="button" id ="correct" value="confirm">
+                        <input  class = "signUp_btn" type="button" id ="correct" value="confirm">
                         <font name = "correct_comment"></font>
                     </td>
                 </tr>
                 <tr>
                     <td>email</td>
-                    <td><input type="email" name="email" placeholder="please input your email" onclick = "emailCheck()" required ></td>
+                    <td><input  class = "signUp_email" type="email" name="email" placeholder="please input your email" onclick = "emailCheck()" required ></td>
                 </tr>
                 <tr>
                     <td>password</td>
-                    <td><input type="password" name="pwd" placeholder="please input your passwords" required ></td>
+                    <td><input class = "signUp_pwd" type="password" name="pwd" placeholder="please input your passwords" required ></td>
                 </tr>
                 <tr>
                     <td>confirm password</td>
-                    <td><input type="password" name="cfPwd" placeholder="please input your passwords again" required ></td>
+                    <td><input  class = "signUp_cfpwd" type="password" name="cfPwd" placeholder="please input your passwords again" required ></td>
                 </tr>
                 <tr>
                     <td>birthday</td>

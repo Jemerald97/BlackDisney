@@ -1,83 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gaegu&display=swap");
 @keyframes shake {
-	0%{
-		transform: translate(1px, 1px) rotate(0deg);
-	}
-	10%{
-		transform: translate(-1px, -1px) rotate(1deg);
-	}
-	20%{
-		transform: translate(-2px, 1px) rotate(-1deg);
-	}
-	30%{
-		transform: translate(1px, 2px) rotate(0deg);
-	}
-	40%{
-		transform: translate(-1px, 1px) rotate(1deg);
-	}
-	50%{
-		transform: translate(1px, -1px) rotate(-2deg);
-	}
-	60%{
-		transform: translate(2px, 1px) rotate(1deg);
-	}
-	70%{
-		transform: translate(-1px, 2px) rotate(2deg);
-	}
-	80%{
-		transform: translate(2px, -1px) rotate(1deg);
-	}
-	90%{
-		transform: translate(-1px, 2px) rotate(0deg);
-	}
-	100%{
-		transform: translate(2px, 1px) rotate(-1deg);
-	}
-}
-.label-nick{
-    display: inline;
-    position : relative;
-    top : 10px;
-    left : 280px;
-    color : white;
-    text-align: center;
-    border : 2px solid white;
-    border-radius: 10%;
-    box-shadow: 2px 2px 7px 1px;
-    
-}
-/* animation: shake 0.5s infinite; */
-
-.input-nick{
-    display: inline;
-    position : relative;
-    top : 50px;
-    left : 250px;
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  20% {
+    transform: translate(-2px, 1px) rotate(-1deg);
+  }
+  30% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(-1px, 1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(1px, -1px) rotate(-2deg);
+  }
+  60% {
+    transform: translate(2px, 1px) rotate(1deg);
+  }
+  70% {
+    transform: translate(-1px, 2px) rotate(2deg);
+  }
+  80% {
+    transform: translate(2px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(-1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(2px, 1px) rotate(-1deg);
+  }
 }
 
-.label-pwd{
-    display: inline;
-    position : relative;
-    top : 90px;
-    left : 220px;
-    color : white;
-    text-align: center;
-    border : 2px solid white;
-    border-radius: 10%;
-    box-shadow: 2px 2px 7px 1px;
-}
-.input-pwd{
-    display: inline;
-    position : relative;
-    top : 130px;
-    left : 190px;
-}
-.submit-login{
-    position : relative;
-    top : 170px;
-    left : 180px;
-    
+@keyframes blink {
+  10% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  30% {
+    color: rgb(131, 131, 131);
+  }
 }
 
-.input-signup:hover{
-    font-size: 1.5rem;
+.label-nick {
+  font-family: "Pangolin", cursive;
+  display: inline;
+  position: relative;
+  top: 10px;
+  left: 280px;
+  color: white;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 10%;
+  box-shadow: 2px 2px 7px 1px;
+}
+
+.input-nick {
+  font-family: "Pangolin", "Gaegu", cursive;
+  display: inline;
+  position: relative;
+  top: 50px;
+  left: 250px;
+  font-size: 16px;
+  border: 1px solid;
+  border-color: black;
+  background-color: black;
+  text-align: center;
+  /* background-color: rgb(255, 255, 255); */
+  outline: transparent;
+  width: 230px;
+}
+.input-nick::placeholder {
+  color: white;
+}
+
+.input-nick::placeholder:focus {
+  color: rgb(0, 0, 0);
+}
+
+.input-nick:focus {
+  background-color: black;
+  border-color: transparent;
+  color: rosybrown;
+}
+.label-pwd {
+  font-family: "Pangolin", cursive;
+  display: inline;
+  position: relative;
+  top: 90px;
+  left: 220px;
+  color: white;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 10%;
+  box-shadow: 2px 2px 7px 1px;
+}
+.input-pwd::placeholder {
+  color: white;
+}
+
+.input-pwd {
+  font-family: "Pangolin", cursive;
+  background-color: black;
+  display: inline;
+  position: relative;
+  top: 130px;
+  left: 190px;
+  font-size: 16px;
+  border: 1px solid;
+  border-color: black;
+  text-align: center;
+  width: 230px;
+  outline: transparent;
+}
+.input-pwd:focus {
+  background-color: black;
+  border-color: transparent;
+  color: rosybrown;
+}
+.submit-login {
+  font-family: "Pangolin", cursive;
+  position: relative;
+  top: 170px;
+  left: 180px;
+}
+
+.input-signup {
+  font-family: "Pangolin", cursive;
+}
+
+.input-signup:hover {
+  font-size: 1.5rem;
+  position: absolute;
 }

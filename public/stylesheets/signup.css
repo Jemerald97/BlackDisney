@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gaegu&display=swap");
+body {
+  background-color: black;
+  color: white;
+  font-family: "Pangolin", cursive;
+}
+.sign_up {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+.signup_title {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.signUp_name {
+  outline: transparent;
+  background: transparent;
+  width: 100%;
+  color: white;
+}
+.signUp_btn {
+  outline: transparent;
+  background-color: white !important;
+}
+.signUp_email {
+  outline: transparent;
+  background: transparent;
+  width: 100%;
+  color: white;
+}
+.signUp_pwd {
+  outline: transparent;
+  background: transparent;
+  width: 100%;
+  color: white;
+}
+.signUp_cfpwd {
+  outline: transparent;
+  background: transparent;
+  width: 100%;
+  color: white;
+}

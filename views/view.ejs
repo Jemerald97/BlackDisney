@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/stylesheets/view.css">
     
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    
 </head>
 <body>
     <h2><%= title %></h2>
@@ -35,10 +34,14 @@
                                 <form action="/view/<%= //item.attraction %>/like" method = "POST">
                                 <input type="hidden" name = "like" value = "1">
                             </form> -->
-                            <span class = "comment-nick"> <%= item.nick %> </span>
-                            <span class = "fas-container">
-                                <i class = "fas fa-comment"></i>
-                            </span>
+                            <ul>
+                                <li>
+                                    <span class = "comment-nick"> <%= item.nick %> </span>
+                                    <span class = "fas-container">
+                                        <i class = "fas fa-comment"></i>
+                                    </span>
+                                </li>
+                            </ul>
                             <% if(update == true && item.num == num){ %>
                                 <form action="/view/<%= item.attraction %>/submit/<%= item.num %>" method = "POST">
                                     <input type="text" name = "updateComment" value="<%= item.comment %> ">
@@ -46,21 +49,28 @@
                                 </form>
                                 <a href="/view/<%= item.attraction %>/delete/<%= item.num %>">delete</a>
                             <% }else{ %>
-                                <span><%= item.comment %></span>
-                                <a href="/view/<%= item.attraction %>/update/<%= item.num %>">update</a>
-                                <a href="/view/<%= item.attraction %>/delete/<%= item.num %>">delete</a>
+                                <ul>
+                                    <li>
+                                        <span><%= item.comment %></span>
+                                        <a href="/view/<%= item.attraction %>/update/<%= item.num %>">update</a>
+                                        <a href="/view/<%= item.attraction %>/delete/<%= item.num %>">delete</a>
+                                    </li>
+                                </ul>
                             <% } %>
                         <% }else{ %>
-                            <span class = "comment-nick"> <%= item.nick %> </span>
-                            <span class = "fas-container">
-                                <i class = "fas fa-comment"></i>
-                            </span>
-                            <span><%= item.comment %></span>
+                            <ul>
+                                <li>
+                                    <span class = "comment-nick"> <%= item.nick %> </span>
+                                    <span class = "fas-container">
+                                        <i class = "fas fa-comment"></i>
+                                    </span>
+                                    <span><%= item.comment %></span>
+                                    <span><%= moment(item.created_at).format('YY.MM.DD hh:mm:ss') %> </span>
+                                </li>
+                            </ul>
                         <% } %>
-                        <span><%= moment(item.created_at).format('YY.MM.DD hh:mm:ss') %> </span>
                     <% }) %>
                 <% } %>
-
         </ul>
     </div>
     <script src="/javascripts/index.js"></script>
