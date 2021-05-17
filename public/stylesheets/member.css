@@ -1,73 +1,84 @@
 /* 영어 */
-@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pangolin&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pangolin&display=swap");
 /* 한글 */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Do+Hyeon&family=Pangolin&display=swap');
-/* margin-top : 20px;transform : rotate(90deg)" */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Do+Hyeon&family=Pangolin&display=swap");
+/* 바코드 */
+@import url("https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap");
 
-body{
-    background-color : black;
-    color : white;
-    
+body {
+  background-color: black;
+  color: white;
 }
-h1{
-    font-family: 'Pangolin', cursive;
-
+h1 {
+  font-family: "Pangolin", cursive;
 }
-a{
-    color : white;
-    text-decoration: none;
-    font-family: 'Pangolin', cursive;
+a {
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  font-family: "Pangolin", cursive;
 }
-.ticket-img{
-    width : 80%;
-    height : 60%;
+p {
+  font-family: "Libre Barcode 39", cursive;
+  writing-mode: vertical-rl;
+  font-size: 3rem;
 }
-.ticket{
-    display : grid;
-    grid-template-rows : 50px;
-    grid-template-columns: 300px 10px 500px;
-    display : flex;
-    justify-content: center;
+.ticket-img {
+  width: 80%;
+  height: 60%;
+}
+.ticket {
+  display: grid;
+  grid-template-rows: 50px;
+  grid-template-columns: 300px 10px 500px;
+  display: flex;
+  justify-content: center;
 }
 /* 왼쪽, 오른쪽, 가운데 정렬 */
-.ticket-left{
-    font-family: 'Bebas Neue', cursive;
-    grid-area: 1/1;
-    display : grid;
-    grid-template-rows: 7;
-    grid-template-columns: 1;
-    border : 5px solid white;
-    padding : 20px;
+.ticket-left {
+  font-family: "Bebas Neue", cursive;
+  grid-area: 1/1;
+  display: grid;
+  grid-template-rows: 7;
+  grid-template-columns: 1;
+  border: 5px solid white;
+  padding: 20px;
 }
-.ticket-center{
-    grid-area: 1/2;
-    display : grid;
-    grid-template-rows: 1;
-    grid-template-columns: 2;
-    border : 5px solid white;
+.ticket-center {
+  grid-area: 1/2;
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 2;
+  border: 5px solid white;
 }
-.ticket-right{
-    font-family: 'Bebas Neue', cursive;
-    grid-area: 1/3;
-    display : grid;
-    grid-template-rows: 3;
-    grid-template-columns: 1;
-    border : 5px solid white;
+.ticket-right {
+  font-family: "Bebas Neue", cursive;
+  grid-area: 1/3;
+  display: grid;
+  grid-template-rows: 3;
+  grid-template-columns: 1;
+  border: 5px solid white;
 }
 /* 내용 구분 */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:800);
 
 .box-with-text {
-    font-size: 5rem;
+  font-size: 3rem;
   background-image: -webkit-linear-gradient(rgb(0, 0, 0) 50%, white 50%);
   background-repeat: repeat;
-  /* background-position: 0 0; */
+  background-position: 0 0;
   background-size: 50px 50px;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-animation: stripes 2s linear infinite;
   animation: stripes 2s linear infinite;
+}
+
+.link {
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 @-webkit-keyframes stripes {
@@ -81,18 +92,11 @@ a{
     background-position: 0 -50px;
   }
 }
-/* Other stuff */
-/* body {
-  overflow: hidden;
-  background: #000;
-  color: #FFF;
-} */
-
 .box-with-text {
-    grid-area : 1/1;
+  grid-area: 1/1;
   position: absolute;
   font-size: 5.5rem;
-  top: 45%;
+  top: 50%;
   left: 55%;
   white-space: nowrap;
   /* text-align: center; */
@@ -102,108 +106,107 @@ a{
   -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
-.ticket-title{
-    grid-area : 1/1;
+.ticket-title {
+  grid-area: 1/1;
 }
-.label-name{
-    grid-area : 2/1;
-    font-size: 2rem;
+.label-name {
+  grid-area: 2/1;
+  font-size: 2rem;
 }
-.ticket-name{
-    font-family: 'Do Hyeon', sans-serif;
-    font-size: 1.5rem;
-    grid-area : 3/1;
+.ticket-name {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 1.5rem;
+  grid-area: 3/1;
 }
-.label-desti{
-    grid-area : 4/1;
-    font-size: 2rem;
+.label-desti {
+  grid-area: 4/1;
+  font-size: 2rem;
 }
-.destination{
-    grid-area : 5/1;
-    font-size: 1.5rem;
+.destination {
+  grid-area: 5/1;
+  font-size: 1.5rem;
 }
-.label-date{
-    grid-area : 6/1;
-    font-size: 2rem;
+.label-date {
+  grid-area: 6/1;
+  font-size: 2rem;
 }
-.ticket-date{
-    grid-area : 7/1;
-    font-size: 1.5rem;
+.ticket-date {
+  grid-area: 7/1;
+  font-size: 1.5rem;
 }
-.bdl{
-    writing-mode :vertical-rl;
-    grid-area: 1/1;
-    font-size: 1em;
-    text-align: center;
-    letter-spacing : 17px;
-    padding-left : 10px;
+.bdl {
+  writing-mode: vertical-rl;
+  grid-area: 1/1;
+  font-size: 1em;
+  text-align: center;
+  letter-spacing: 17px;
+  padding-left: 10px;
 }
-.barcode{
-    grid-area : 1/2;
-    /* width : 90%;
-    height : 20%;
-    padding-top : 200px;
-    padding-left : 300px; */
+.barcode {
+  grid-area: 1/2;
+  padding-top: 50%;
 }
-.ticket-mickey{
-    grid-area : 1/1;
+.ticket-mickey {
+  grid-area: 1/1;
 }
-.ticket-img{
-    width : 60%;
-    height : 45%;
+.ticket-img {
+  width: 60%;
+  height: 45%;
 }
-.ticket-head{
-    grid-area : 2/1;
+.ticket-head {
+  grid-area: 2/1;
 }
-.ticket-welcome{
-    grid-area : 3/1;
+.ticket-welcome {
+  grid-area: 3/1;
 }
 
 /* 티켓 움직이는 부분 */
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 svg {
-    display: block;
-    font: 5em 'Montserrat';
-    width: 50%;
-    height: 20%;
-    margin: 0 auto;
+  display: block;
+  font: 5em "Montserrat";
+  width: 50%;
+  height: 20%;
+  margin: 0 auto;
 }
 
 .text-copy {
-    fill: none;
-    stroke: white;
-    stroke-dasharray: 6% 29%;
-    stroke-width: 10px;
-    stroke-dashoffset: 0%;
-    animation: stroke-offset 5.5s infinite linear;
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 10px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 5.5s infinite linear;
 }
 
-.text-copy:nth-child(1){
-	stroke: #000000;
-	animation-delay: -1s;
+.text-copy:nth-child(1) {
+  stroke: #000000;
+  animation-delay: -1s;
 }
 
-.text-copy:nth-child(2){
-	stroke: #ffffff;
-	animation-delay: -2s;
+.text-copy:nth-child(2) {
+  stroke: #ffffff;
+  animation-delay: -2s;
 }
 
-.text-copy:nth-child(3){
-	stroke: #000000;
-	animation-delay: -3s;
+.text-copy:nth-child(3) {
+  stroke: #000000;
+  animation-delay: -3s;
 }
 
-.text-copy:nth-child(4){
-	stroke: #ffffff;
-	animation-delay: -4s;
+.text-copy:nth-child(4) {
+  stroke: #ffffff;
+  animation-delay: -4s;
 }
 
-.text-copy:nth-child(5){
-	stroke: #000000;
-	animation-delay: -5s;
+.text-copy:nth-child(5) {
+  stroke: #000000;
+  animation-delay: -5s;
 }
 
-@keyframes stroke-offset{
-	100% {stroke-dashoffset: -35%;}
+@keyframes stroke-offset {
+  100% {
+    stroke-dashoffset: -35%;
+  }
 }

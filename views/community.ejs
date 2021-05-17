@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="../stylesheets/community.css">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c632d6f0931728bdfd09239b10dddc"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=54c632d6f0931728bdfd09239b10dddc&libraries=services,clusterer,drawing"></script>
-
 </head>
 <body>
     <div class= "center">
-        <h1>Attractions</h1>
-        <% for(let i = 1; i<7; i++){ %>
+        <a href="/"><p>Attractions</p></a>
+        <% for(let i = 1; i < 7; i++){ %>
             <% let attraction = ['Alice in Wonderland', 'Buzz Lightyear Astro Blasters', 'Circus Train', 'Dumbo the Flying Elephant', 'Incredicoster', 'Riverboat'];  %> 
-            <%= attraction[i-1] %><a href="/view/<%= i %>"><img class = "attraction-img" src="../images/play<%= i %>.jpg" alt="어트랙션"></a>
-            
-            <div id = "map<%= i %>" style = "z-index = 2;width:15%; height:25%; border-radius: 15%; animation : shake 2s infinite" ></div>
+            <div class="map_container">
+                <div class = "attraction_i"><%= attraction[i-1] %></div>
+                <a  class = "attraction-img" href="/view/<%= i %>"><img class = "attraction-img" src="../images/play<%= i %>.jpg" alt="어트랙션"></a><div id = "map<%= i %>" style = "z-index = 2; width:35%; height:80%; border-radius: 15%; animation : shake 2s infinite; float : left" ></div>
+            </div>
         <% } %>
     </div>
 

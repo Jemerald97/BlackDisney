@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../stylesheets/member.css">
 </head>
 <body>
-    <h1><%= nick %>'s Page</h1>
+    <a href="/">
+    <h1><%= nick %>'s Page</h1></a>
     <div class = "total">
                 <% if(ticket == true){ %>
                 <div class = "ticket">
@@ -24,7 +25,8 @@
                     </div>
                     <div class = "ticket-center">
                         <span class = "bdl">BLACK DISNEYLAND</span>
-                        <img class = "barcode"src="../images/barcode.jpg"  alt="바코드">
+                        <p class = "barcode">DISNEYLAND</p>
+                        <!-- <img class = "barcode"src="../images/barcode.jpg"  alt="바코드"> -->
                     </div>
                     <div class = "ticket-right">
                         <div class = "ticket-mickey">
@@ -51,8 +53,8 @@
                     <p>예약한 티켓이 없습니다!</p>
                 <% } %> 
                 </div>
-            <a href="/reserve">reserve</a>
-            <a href="/pass">Do you have FreePass ticket?</a>
+            <a href="/reserve" class = "link">reserve</a>
+            <a href="/pass" class = "link">Do you have FreePass ticket?</a>
     </div>
 </body>
 <script src="/javascripts/index.js"></script>

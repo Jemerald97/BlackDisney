@@ -1,78 +1,109 @@
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
     <link rel="stylesheet" href="/stylesheets/view.css">
-    
+
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
-<body>
-    <h2><%= title %></h2>
-    <div class = "chat">
-        <ul>
-            <li>Attractions</li>
-            
-            <li><img class = "view_img"src="../images/play<%= id %>.jpg" alt=""></li>
-            <!-- <li><img src="https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/wdpro-assets/dlr/parks-and-tickets/attractions/disneyland/casey-jr-circus-train/casey-jr-circus-train-00.jpg?1559891100710" alt="어트랙션"></li>
-            <li><img src="https://cdn1.parksmedia.wdprapps.disney.com/resize/mwImage/1/1600/900/75/dam/disneyland/attractions/disneyland/casey-jr-circus-train/casey-jr-matterhorn-16x9.jpg?1559891100710" alt=""></li> -->
-                <!-- 댓글 쓰는 곳 -->
-                <form action="/view/<%= id %>/write" method="POST">
-                    <ul>
-                        <li><input name = "comment" placeholder="Please Write Down here" required>
-                            <input type="submit" value="upload">
-                        </li>
-                    </ul>
-                </form>
 
-                <!-- 댓글 보여주는 곳 -->
-                <% if(data.length != 0){ %>
-                    <% data.forEach(function(item, index){ %>
-                        <% if(logined==true && item.nick == nick){ %>
-                            <!-- 좋아요 기능 
+<body>
+    <a href="/"><h2>
+        <%= title %>
+    </h2></a>
+    
+    <div class="chat">
+        <ul>
+            <% if(update==false){ %>
+                <li><img class="view_img" src="../images/play<%= id %>.jpg" alt="왜 엑박 뜨는데!!!!"></li>
+                <% }%>
+                    <% if(update==true){ %>
+                        <li><img class="view_img" src="../../../images/play<%= id %>.jpg" alt="왜 엑박 뜨는데!!!!"></li>
+                        <% }%>
+                            <!-- 댓글 쓰는 곳 -->
+                            <form action="/view/<%= id %>/write" method="POST">
+                                <ul>
+                                    <li><input name="comment" placeholder="Please Write Down here" required>
+                                        <input type="submit" value="upload">
+                                    </li>
+                                </ul>
+                            </form>
+                            <div class="total_comments">
+                                <!-- 댓글 보여주는 곳 -->
+                                <% if(data.length !=0){ %>
+                                    <% data.forEach(function(item, index){ %>
+                                        <% if(logined==true && item.nick==nick){ %>
+                                            <!-- 좋아요 기능 
                                 <form action="/view/<%= //item.attraction %>/like" method = "POST">
                                 <input type="hidden" name = "like" value = "1">
                             </form> -->
-                            <ul>
-                                <li>
-                                    <span class = "comment-nick"> <%= item.nick %> </span>
-                                    <span class = "fas-container">
-                                        <i class = "fas fa-comment"></i>
-                                    </span>
-                                </li>
-                            </ul>
-                            <% if(update == true && item.num == num){ %>
-                                <form action="/view/<%= item.attraction %>/submit/<%= item.num %>" method = "POST">
-                                    <input type="text" name = "updateComment" value="<%= item.comment %> ">
-                                    <input type="submit" value = "conform">
-                                </form>
-                                <a href="/view/<%= item.attraction %>/delete/<%= item.num %>">delete</a>
-                            <% }else{ %>
-                                <ul>
-                                    <li>
-                                        <span><%= item.comment %></span>
-                                        <a href="/view/<%= item.attraction %>/update/<%= item.num %>">update</a>
-                                        <a href="/view/<%= item.attraction %>/delete/<%= item.num %>">delete</a>
-                                    </li>
-                                </ul>
-                            <% } %>
-                        <% }else{ %>
-                            <ul>
-                                <li>
-                                    <span class = "comment-nick"> <%= item.nick %> </span>
-                                    <span class = "fas-container">
-                                        <i class = "fas fa-comment"></i>
-                                    </span>
-                                    <span><%= item.comment %></span>
-                                    <span><%= moment(item.created_at).format('YY.MM.DD hh:mm:ss') %> </span>
-                                </li>
-                            </ul>
-                        <% } %>
-                    <% }) %>
-                <% } %>
+                                            <ul>
+                                                <li>
+
+                                                    <span class="comment-nick">
+                                                        <%= item.nick %>
+                                                    </span>
+                                                    <span class="fas-container">
+                                                        <i class="fas fa-comment"></i>
+                                                    </span>
+                                                    <% if(update==true && item.num==num){ %>
+                                                        <form
+                                                            action="/view/<%= item.attraction %>/submit/<%= item.num %>"
+                                                            method="POST">
+                                                            <input type="text" name="updateComment"
+                                                                value="<%= item.comment %> ">
+
+                                                            <input type="submit" value="conform">
+                                                        </form>
+                                                        <a
+                                                            href="/view/<%= item.attraction %>/delete/<%= item.num %>">delete</a>
+                                                        <% }else{ %>
+                                                            <span class="main_comment">
+                                                                <%= item.comment %>
+                                                            </span>
+                                                            <span class="time">
+                                                                <%= moment(item.created_at).format('YY.MM.DD hh:mm:ss')
+                                                                    %>
+                                                            </span>
+                                                            <a
+                                                                href="/view/<%= item.attraction %>/update/<%= item.num %>">update</a>
+                                                            <a
+                                                                href="/view/<%= item.attraction %>/delete/<%= item.num %>">delete</a>
+
+                                                </li>
+                                            </ul>
+                                            <% } %>
+                                                <% }else{ %>
+                                                    <ul>
+                                                        <li>
+                                                            <span class="comment-nick">
+                                                                <%= item.nick %>
+                                                            </span>
+                                                            <span class="fas-container">
+                                                                <i class="fas fa-comment"></i>
+                                                            </span>
+                                                            <span class="main_comment">
+                                                                <%= item.comment %>
+                                                            </span>
+                                                            <span class="time">
+                                                                <%= moment(item.created_at).format('YY.MM.DD hh:mm:ss')
+                                                                    %>
+                                                            </span>
+                                                        </li>
+                                                    </ul>
+                                                    <% } %>
+                                                        <% }) %>
+                                                            <% } %>
+                            </div>
+                            <a href="/community">to List</a>
         </ul>
     </div>
     <script src="/javascripts/index.js"></script>
 </body>
+
 </html>
